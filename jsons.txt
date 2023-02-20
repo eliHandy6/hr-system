@@ -1,0 +1,22 @@
+{
+	"email" : "admin@gmail.com",
+	"password" : "admin"
+}
+{
+	"email" : "user@gmail.com",
+	"password" : "user"
+}
+{
+  "email": "dummyv3@gmail.com",
+  "enabled": true,
+  "first_time_login": true,
+  "lang_key": "en",
+  "last_login": "string",
+  "name": "string",
+  "phone_number": "0721665026",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "username": "dummyv3",
+  "password": "dummyv3"
+}
