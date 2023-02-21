@@ -11,4 +11,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface StaffCategoryRepository extends JpaRepository<StaffCategory, Long> {
 
     boolean existsStaffCategoryByCategoryNameIgnoreCase(String name);
+
 }

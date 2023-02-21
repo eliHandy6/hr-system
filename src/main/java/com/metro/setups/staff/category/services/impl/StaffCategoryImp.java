@@ -2,6 +2,7 @@ package com.metro.setups.staff.category.services.impl;
 
 import com.metro.core.ApiResponse;
 import com.metro.exceptions.DuplicateResourceException;
+import com.metro.exceptions.ResourceNotFoundException;
 import com.metro.setups.staff.category.dtos.StaffCategoryDto;
 import com.metro.setups.staff.category.repositories.StaffCategoryRepository;
 import com.metro.setups.staff.category.services.StaffCategoryService;
@@ -55,7 +56,27 @@ public class StaffCategoryImp implements StaffCategoryService {
 
     @Override
     public ApiResponse updateStaffCategory(Long id, StaffCategoryDto staffCategoryDto) {
-        return null;
+        log.info("updating staff category {}", id);
+        ApiResponse response = ApiResponse.builder()
+                .message("Failed to update the category")
+                .success(false)
+                .data(staffCategoryDto)
+                .build();
+
+        StaffCategory staffCategory = staffCategoryRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
+                "staff category not found with id  " + id));
+
+        staffCategory.setCategoryName(staffCategoryDto.getCategoryName());
+        staffCategory = staffCategoryRepository.save(staffCategory);
+
+        if (StringUtils.isNotEmpty(staffCategory.getId().toString())) {
+            staffCategoryDto.setCategoryId(Long.valueOf(staffCategory.getId().longValue()));
+            response.setMessage("staff category updated  successfully");
+            response.setData(staffCategoryDto);
+            response.setSuccess(true);
+        }
+
+        return response;
     }
 
     @Override
