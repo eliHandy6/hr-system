@@ -55,7 +55,7 @@ public class ApidocConfig {
     public GroupedOpenApi staffSetups() {
         String[] paths = {"/api/v1/staff-category/**"};
         return GroupedOpenApi.builder()
-                .group("Staff")
+                .group("Setups")
                 .pathsToMatch(paths)
                 .build();
     }

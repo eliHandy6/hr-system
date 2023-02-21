@@ -84,7 +84,6 @@ public class StaffCategoryImp implements StaffCategoryService {
     }
 
     @Override
-    @ReadOnlyProperty()
     public ApiResponse getAllStaffCategory() {
         log.info("fetching staff categories {}");
         ApiResponse response = ApiResponse.builder()
@@ -117,7 +116,27 @@ public class StaffCategoryImp implements StaffCategoryService {
 
     @Override
     public ApiResponse selectStaffCategoryByID(Long id) {
-        return null;
+        log.info("selecting staff category {}", id);
+        ApiResponse response = ApiResponse.builder()
+                .message("Failed to fetch the category")
+                .success(false)
+                .build();
+
+        StaffCategory staffCategory = staffCategoryRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
+                "staff category not found with id  " + id));
+
+        if (StringUtils.isNotEmpty(staffCategory.getId().toString())) {
+            StaffCategoryDto staffCategoryDto = StaffCategoryDto.builder()
+                    .categoryId(staffCategory.getId())
+                    .categoryName(staffCategory.getCategoryName())
+                    .build();
+            staffCategoryDto.setCategoryId(Long.valueOf(staffCategory.getId().longValue()));
+            response.setMessage("staff category fetched  successfully");
+            response.setData(staffCategoryDto);
+            response.setSuccess(true);
+        }
+
+        return response;
     }
 
     @Override
