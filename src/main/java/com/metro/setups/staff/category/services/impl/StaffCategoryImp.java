@@ -10,7 +10,11 @@ import com.metro.setups.staff.category.specifications.StaffCategory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.annotation.ReadOnlyProperty;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 /**
@@ -80,8 +84,25 @@ public class StaffCategoryImp implements StaffCategoryService {
     }
 
     @Override
+    @ReadOnlyProperty()
     public ApiResponse getAllStaffCategory() {
-        return null;
+        log.info("fetching staff categories {}");
+        ApiResponse response = ApiResponse.builder()
+                .success(true)
+                .build();
+        List<StaffCategory> staffCategoryList = staffCategoryRepository.findAll(Sort.by("categoryName").ascending());
+        if (!staffCategoryList.isEmpty()) {
+            response.setMessage("staff categories fetched  successfully");
+            response.setData(staffCategoryList.stream().map(e -> {
+                StaffCategoryDto staffCategoryDto = StaffCategoryDto.builder()
+                        .categoryName(e.getCategoryName())
+                        .categoryId(e.getId())
+                        .build();
+                return staffCategoryDto;
+            }));
+            response.setSuccess(true);
+        }
+        return response;
     }
 
     @Override
