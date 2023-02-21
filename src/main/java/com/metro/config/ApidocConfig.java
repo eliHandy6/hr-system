@@ -22,9 +22,10 @@ public class ApidocConfig {
                 .components(components)
                 .info(new Info().title("Metropolitan_hr").version("1.0.0").description("human resource app"));
     }
+
     @Bean
-    public GroupedOpenApi authenticationApi(){
-        String [] paths = {"/api/v1/auth/**"};
+    public GroupedOpenApi authenticationApi() {
+        String[] paths = {"/api/v1/auth/**"};
         return GroupedOpenApi.builder()
                 .group("Authentication")
                 .pathsToMatch(paths)
@@ -32,18 +33,29 @@ public class ApidocConfig {
     }
 
     @Bean
-    public GroupedOpenApi postApi(){
-        String [] paths = {"/post/**"};
+    public GroupedOpenApi postApi() {
+        String[] paths = {"/post/**"};
         return GroupedOpenApi.builder()
                 .group("Post")
                 .pathsToMatch(paths)
                 .build();
     }
+
     @Bean
-    public GroupedOpenApi roleApi(){
+    public GroupedOpenApi roleApi() {
         String[] paths = {"/api/v1/roles/**"};
         return GroupedOpenApi.builder()
                 .group("Roles")
+                .pathsToMatch(paths)
+                .build();
+    }
+
+
+    @Bean
+    public GroupedOpenApi staffSetups() {
+        String[] paths = {"/api/v1/staff-category/**"};
+        return GroupedOpenApi.builder()
+                .group("Staff")
                 .pathsToMatch(paths)
                 .build();
     }
