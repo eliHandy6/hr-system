@@ -14,6 +14,7 @@ import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -86,19 +87,24 @@ public class StaffCategoryImp implements StaffCategoryService {
     @Override
     public ApiResponse getAllStaffCategory() {
         log.info("fetching staff categories {}");
+        List<StaffCategoryDto> staffCategoryDtos = new ArrayList<>();
         ApiResponse response = ApiResponse.builder()
                 .success(true)
+                .data(staffCategoryDtos)
+                .message("No record is existing")
                 .build();
+
         List<StaffCategory> staffCategoryList = staffCategoryRepository.findAll(Sort.by("categoryName").ascending());
         if (!staffCategoryList.isEmpty()) {
-            response.setMessage("staff categories fetched  successfully");
-            response.setData(staffCategoryList.stream().map(e -> {
+            staffCategoryDtos.addAll(staffCategoryList.stream().map(e -> {
                 StaffCategoryDto staffCategoryDto = StaffCategoryDto.builder()
                         .categoryName(e.getCategoryName())
                         .categoryId(e.getId())
                         .build();
                 return staffCategoryDto;
-            }));
+            }).toList());
+            response.setMessage("staff categories fetched  successfully");
+            response.setData(staffCategoryDtos);
             response.setSuccess(true);
         }
         return response;
@@ -111,8 +117,30 @@ public class StaffCategoryImp implements StaffCategoryService {
 
     @Override
     public ApiResponse selectStaffCategoryByName(String name) {
-        return null;
+
+        log.info("selecting staff category  by name {}", name);
+        List<StaffCategoryDto> staffCategoryDtos = new ArrayList<>();
+        ApiResponse response = ApiResponse.builder()
+                .message("No record is existing")
+                .success(false)
+                .data(staffCategoryDtos)
+                .build();
+        List<StaffCategory> staffCategory = staffCategoryRepository.findByCategoryNameContainingIgnoreCase(name);
+        if (!staffCategory.isEmpty()) {
+            staffCategoryDtos.addAll(staffCategory.stream().map(e -> {
+                StaffCategoryDto staffCategoryDto = StaffCategoryDto.builder()
+                        .categoryName(e.getCategoryName())
+                        .categoryId(e.getId())
+                        .build();
+                return staffCategoryDto;
+            }).toList());
+            response.setMessage("staff categories fetched  successfully");
+            response.setData(staffCategoryDtos);
+            response.setSuccess(true);
+        }
+        return response;
     }
+
 
     @Override
     public ApiResponse selectStaffCategoryByID(Long id) {

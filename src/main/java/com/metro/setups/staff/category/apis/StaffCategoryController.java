@@ -144,6 +144,29 @@ public class StaffCategoryController {
             response.setMessage(exception.getMessage());
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+
+    @Operation(summary = "fetch staff category based on name")
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully fetched ",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ApiResponse.class))}),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
+                    content = @Content)})
+    @GetMapping("/search")
+    public ResponseEntity<?> getStaffCategoryByName(@RequestParam String category_name) {
+        ApiResponse response = ApiResponse.builder()
+                .message("Failed to get staff category ")
+                .success(false)
+                .build();
+        try {
+            response = staffCategoryService.selectStaffCategoryByName(category_name);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception exception) {
+            response.setMessage(exception.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
 
     }
 

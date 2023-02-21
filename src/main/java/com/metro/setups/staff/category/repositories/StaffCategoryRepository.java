@@ -14,5 +14,7 @@ public interface StaffCategoryRepository extends JpaRepository<StaffCategory, Lo
 
     boolean existsStaffCategoryByCategoryNameIgnoreCase(String name);
 
+    List<StaffCategory> findByCategoryNameContainingIgnoreCase(String name);
+
 
 }
