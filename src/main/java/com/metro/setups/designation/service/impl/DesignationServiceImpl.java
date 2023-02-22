@@ -9,7 +9,6 @@ import com.metro.setups.designation.entities.Designation;
 import com.metro.setups.designation.repository.DesignationRepository;
 import com.metro.setups.designation.service.DesignationService;
 import com.metro.setups.sections.Entity.Section;
-import com.metro.setups.sections.dtos.SectionDTO;
 import com.metro.setups.sections.respositories.SectionRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Sort;

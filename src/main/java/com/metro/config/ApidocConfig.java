@@ -89,6 +89,7 @@ public class ApidocConfig {
                 .pathsToMatch(paths)
                 .build();
     }
+
     @Bean
     public GroupedOpenApi designationSetups() {
         String[] paths = {"/api/v1/designation/**",};
@@ -98,6 +99,14 @@ public class ApidocConfig {
                 .build();
     }
 
+    @Bean
+    public GroupedOpenApi districtSetups() {
+        String[] paths = {"/api/v1/district/**",};
+        return GroupedOpenApi.builder()
+                .group("districts")
+                .pathsToMatch(paths)
+                .build();
+    }
 
 
 }

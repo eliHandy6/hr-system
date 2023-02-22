@@ -1019,3 +1019,6 @@
 2023-02-22 20:44:58 [RMI TCP Connection(6)-172.28.176.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2023-02-22 20:44:58 [RMI TCP Connection(6)-172.28.176.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
 2023-02-22 20:45:22 [http-nio-8200-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 260 ms
+2023-02-22 21:13:49 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-02-22 21:13:49 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-02-22 21:13:49 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
