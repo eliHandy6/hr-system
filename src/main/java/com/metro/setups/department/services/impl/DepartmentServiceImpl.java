@@ -1,9 +1,6 @@
 package com.metro.setups.department.services.impl;
 
-import com.metro.exceptions.APIExceptions;
-import com.metro.exceptions.ApiResponses;
-import com.metro.exceptions.DuplicateResourceException;
-import com.metro.exceptions.EmptySpaceExceptionHandler;
+import com.metro.exceptions.*;
 import com.metro.setups.department.dtos.DepartmentDTO;
 import com.metro.setups.department.entities.Department;
 import com.metro.setups.department.repositories.DepartmentRepository;
@@ -36,23 +33,67 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public ApiResponses getDepartmentById(Long id) {
-        return null;
+        ApiResponses apiResponse = ApiResponses.builder()
+                .message("Failed to get department by Id")
+                .success(false)
+                .data(null)
+                .build();
+
+        Department department = departmentRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Department with id" + id + " Not found")
+        );
+        DepartmentDTO departmentDTO = DepartmentDTO.builder()
+                        .Id(department.getId())
+                        .name(department.getName())
+                        .manager_id(department.getManager_id())
+                        .build();
+        apiResponse.setMessage("Successfully fetched department with given Id");
+        apiResponse.setSuccess(true);
+        apiResponse.setData(departmentDTO);
+        return apiResponse;
     }
 
     @Override
     public ApiResponses getDepartmentByName(String name) {
-        return null;
+        ApiResponses apiResponse = ApiResponses.builder()
+                .message("Failed to get department by name")
+                .success(false)
+                .data(null)
+                .build();
+        Department department = departmentRepository.findDepartmentByName(name).orElseThrow(() -> new ResourceNotFoundException(" Department with name : " + name + "not found"));
+        DepartmentDTO departmentDTO = DepartmentDTO.builder()
+                .Id(department.getId())
+                .name(department.getName())
+                .manager_id(department.getManager_id())
+                .build();
+        apiResponse.setData(departmentDTO);
+        apiResponse.setMessage("Completed Search successfully");
+        apiResponse.setSuccess(true);
+        return apiResponse;
     }
 
     @Override
     public ApiResponses updateDepartment(Long id, DepartmentDTO departmentDTO) {
-        return null;
+        ApiResponses apiResponse = ApiResponses.builder()
+                .message("Failed to update the department")
+                .success(false)
+                .data(departmentDTO)
+                .build();
+        Department department = departmentRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("department with id " + id +" not found" ));
+        department.setName(departmentDTO.getName());
+        department.setManager_id(departmentDTO.getManager_id());
+        department = departmentRepository.save(department);
+        departmentDTO.setId((Long) department.getId());
+        apiResponse.setData(departmentDTO);
+        apiResponse.setMessage("Updated Department Successfully");
+        apiResponse.setSuccess(true);
+        return apiResponse;
     }
 
     @Override
     public ApiResponses createDepartment(DepartmentDTO departmentDTO) {
         ApiResponses apiResponse = ApiResponses.builder()
-                .message("Failed to create title")
+                .message("Failed to create Department")
                 .success(false)
                 .data(departmentDTO)
                 .build();

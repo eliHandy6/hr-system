@@ -41,7 +41,7 @@ public class TitleServiceImpl implements TitleService {
                 .build();
         String name = titleDto.getName();
         if((name.trim()).length() == 0) throw new EmptySpaceExceptionHandler("Name cannot be empty");
-        if (titleRepository.findTitlesByName(name).isPresent()) {
+        if (titleRepository.findTitlesByNameIgnoreCase(name).isPresent()) {
             throw new DuplicateResourceException("Title " + name +" already exists in the database try another");
         }
 
@@ -79,7 +79,7 @@ public class TitleServiceImpl implements TitleService {
                 .success(false)
                 .data(null)
                 .build();
-        Titles titles = titleRepository.findTitlesByName(name).orElseThrow(() -> new ResourceNotFoundException(" Title with name : " + name + "not found"));
+        Titles titles = titleRepository.findTitlesByNameIgnoreCase(name).orElseThrow(() -> new ResourceNotFoundException(" Title with name : " + name + "not found"));
         apiResponse.setData(titles);
         apiResponse.setMessage("Completed Search successfully");
         apiResponse.setSuccess(true);
@@ -104,9 +104,9 @@ public class TitleServiceImpl implements TitleService {
                 .build();
 
         Titles titles = titleRepository.findById(id).orElseThrow(
-                () -> new ResourceNotFoundException("User with id" + id + " Not found")
+                () -> new ResourceNotFoundException("title with id" + id + " Not found")
         );
-        apiResponse.setMessage("Successfully fetched user with given Id");
+        apiResponse.setMessage("Successfully fetched title with given Id");
         apiResponse.setSuccess(true);
         apiResponse.setData(titles);
         return apiResponse;

@@ -3,6 +3,7 @@ package com.metro.setups.department.controllers;
 import com.metro.exceptions.ApiResponses;
 import com.metro.exceptions.DuplicateResourceException;
 import com.metro.exceptions.EmptySpaceExceptionHandler;
+import com.metro.exceptions.ResourceNotFoundException;
 import com.metro.setups.department.dtos.DepartmentDTO;
 import com.metro.setups.department.services.DepartmentService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -54,7 +55,7 @@ public class DepartmentController {
     }
 
     @PostMapping
-    @Operation(description = "Create a title")
+    @Operation(description = "Create a Department")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = " Successfully created",
                     content = {@Content(mediaType = "application/json",
@@ -65,12 +66,12 @@ public class DepartmentController {
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
                     content = @Content)})
-    public ResponseEntity<?> createTitle(
+    public ResponseEntity<?> createDepartment(
 
             @RequestBody @Valid DepartmentDTO departmentDTO
             ) {
         ApiResponses response = ApiResponses.builder()
-                .message("Failed to create title")
+                .message("Failed to create Department")
                 .success(false)
                 .data(departmentDTO)
                 .build();
@@ -84,6 +85,94 @@ public class DepartmentController {
             response.setMessage(duplicateResourceException.getMessage());
             return new ResponseEntity<>(response, HttpStatus.CONFLICT);
         }catch (Exception exception) {
+            response.setMessage(exception.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    @GetMapping("/{id}")
+    @Operation(description = "Get the department by Id")
+    @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully Retrieved the department by Id",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = com.metro.core.ApiResponse.class))}),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Title not found ",
+                    content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
+                    content = @Content)})
+    public ResponseEntity<?> getTitleById(@PathVariable Long id) {
+        ApiResponses response = ApiResponses.builder()
+                .message("Failed to get the department by Id")
+                .success(false)
+                .data(null)
+                .build();
+        try {
+            response = departmentService.getDepartmentById(id);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (ResourceNotFoundException resourceNotFoundException) {
+            response.setMessage(resourceNotFoundException.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        } catch (Exception exception) {
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/search")
+    @Operation(description = "Get the department by name")
+    @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully searched for the department",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = com.metro.core.ApiResponse.class))}),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Department not found ",
+                    content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
+                    content = @Content)})
+    public ResponseEntity<?> fetchTitleByName(
+            @RequestParam String name
+    ) {
+        ApiResponses response = ApiResponses.builder()
+                .message("Failed to get the Department with given name")
+                .success(false)
+                .data(null)
+                .build();
+        try {
+            response = departmentService.getDepartmentByName(name);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (ResourceNotFoundException resourceNotFoundException) {
+            response.setMessage(resourceNotFoundException.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        } catch (Exception exception) {
+            response.setMessage(exception.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    @PutMapping("/{id}")
+    @Operation(description = "update the Department")
+    @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully updated",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = com.metro.core.ApiResponse.class))}),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Invalid body",
+                    content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Title not found ",
+                    content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
+                    content = @Content)})
+    public ResponseEntity<?> updateTitle(
+            @PathVariable(value = "id") Long id,
+            @RequestBody @Valid DepartmentDTO departmentDto
+    ) {
+        ApiResponses response = ApiResponses.builder()
+                .message("Failed to update Department")
+                .success(false)
+                .data(departmentDto)
+                .build();
+        try {
+            response = departmentService.updateDepartment(id, departmentDto);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (ResourceNotFoundException resourceNotFoundException) {
+            response.setMessage(resourceNotFoundException.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        } catch (Exception exception) {
             response.setMessage(exception.getMessage());
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
