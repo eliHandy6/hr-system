@@ -1,8 +1,10 @@
-package com.metro.setups.staff.category.apis;
+package com.metro.setups.common.maritalstatus.apis;
 
 import com.metro.core.ApiResponse;
 import com.metro.exceptions.DuplicateResourceException;
 import com.metro.exceptions.ResourceNotFoundException;
+import com.metro.setups.common.maritalstatus.dtos.MaritalStatusDto;
+import com.metro.setups.common.maritalstatus.services.MaritalStatusService;
 import com.metro.setups.staff.category.dtos.StaffCategoryDto;
 import com.metro.setups.staff.category.services.StaffCategoryService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -24,15 +26,15 @@ import org.springframework.web.bind.annotation.*;
  **/
 
 @RestController
-@RequestMapping("api/v1/staff-category")
+@RequestMapping("api/v1/marital-status")
 @Tag(name = "Setups")
 @RequiredArgsConstructor
 @Slf4j
-public class StaffCategoryController {
+public class MaritalStatusController {
 
-    private final StaffCategoryService staffCategoryService;
+    private final MaritalStatusService maritalStatusService;
 
-    @Operation(summary = "create staff category")
+    @Operation(summary = "create marital status")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = " Successfully created",
                     content = {@Content(mediaType = "application/json",
@@ -44,14 +46,14 @@ public class StaffCategoryController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
                     content = @Content)})
     @PostMapping
-    public ResponseEntity<?> createStaffCategory(@RequestBody @Valid StaffCategoryDto staffCategoryDto) {
+    public ResponseEntity<?> createMaritalStatus(@RequestBody @Valid MaritalStatusDto maritalStatusDto) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to save the staff  category")
+                .message("Failed to save the marital status")
                 .success(false)
-                .data(staffCategoryDto)
+                .data(maritalStatusDto)
                 .build();
         try {
-            response = staffCategoryService.createStaffCategory(staffCategoryDto);
+            response = maritalStatusService.createMaritalStatus(maritalStatusDto);
             return new ResponseEntity<>(response, HttpStatus.CREATED);
         } catch (DuplicateResourceException duplicateResourceException) {
             response.setMessage(duplicateResourceException.getMessage());
@@ -64,28 +66,28 @@ public class StaffCategoryController {
     }
 
 
-    @Operation(summary = "update staff category")
+    @Operation(summary = "update marital status")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully updated ",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = ApiResponse.class))}),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Invalid body",
                     content = @Content),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "staff category not found ",
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "marital status not found ",
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "409", description = "Conflict ",
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
                     content = @Content)})
     @PutMapping({"/{id}"})
-    public ResponseEntity<?> updateStaffCategory(@PathVariable Long id, @RequestBody @Valid StaffCategoryDto staffCategoryDto) {
+    public ResponseEntity<?> updateMaritalStatus(@PathVariable Long id, @RequestBody @Valid MaritalStatusDto maritalStatusDto) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to update the staff category")
+                .message("Failed to update the marital status")
                 .success(false)
-                .data(staffCategoryDto)
+                .data(maritalStatusDto)
                 .build();
         try {
-            response = staffCategoryService.updateStaffCategory(id, staffCategoryDto);
+            response = maritalStatusService.updateMaritalStatus(id, maritalStatusDto);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (ResourceNotFoundException resourceNotFoundException) {
             response.setMessage(resourceNotFoundException.getMessage());
@@ -100,7 +102,7 @@ public class StaffCategoryController {
 
     }
 
-    @Operation(summary = "get staff categories")
+    @Operation(summary = "get marital  status")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully fetched ",
                     content = {@Content(mediaType = "application/json",
@@ -109,13 +111,13 @@ public class StaffCategoryController {
                     content = @Content)})
 
     @GetMapping
-    public ResponseEntity<?> getAllStaffCategories() {
+    public ResponseEntity<?> getMaritalStatus() {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to fetch the staff categories")
+                .message("Failed to fetch the marital status")
                 .success(false)
                 .build();
         try {
-            response = staffCategoryService.getAllStaffCategory();
+            response = maritalStatusService.getMaritalStatuses();
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception exception) {
             response.setMessage(exception.getMessage());
@@ -124,23 +126,23 @@ public class StaffCategoryController {
 
     }
 
-    @Operation(summary = "fetch staff category based on id")
+    @Operation(summary = "fetch marital status based on id")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully fetched ",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = ApiResponse.class))}),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "staff category not found ",
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "marital status not found ",
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
                     content = @Content)})
     @GetMapping("/{id}")
-    public ResponseEntity<?> getStaffCategoryById(@PathVariable Long id) {
+    public ResponseEntity<?> getMaritalStatusByID(@PathVariable Long id) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to get staff category ")
+                .message("Failed to get marital status ")
                 .success(false)
                 .build();
         try {
-            response = staffCategoryService.selectStaffCategoryByID(id);
+            response = maritalStatusService.selectMaritalStatusByID(id);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (ResourceNotFoundException resourceNotFoundException) {
             response.setMessage(resourceNotFoundException.getMessage());
@@ -152,7 +154,7 @@ public class StaffCategoryController {
     }
 
 
-    @Operation(summary = "fetch staff category based on name")
+    @Operation(summary = "fetch marital status  based on name")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully fetched ",
                     content = {@Content(mediaType = "application/json",
@@ -160,13 +162,13 @@ public class StaffCategoryController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
                     content = @Content)})
     @GetMapping("/search")
-    public ResponseEntity<?> getStaffCategoryByName(@RequestParam String category_name) {
+    public ResponseEntity<?> getMaritalStatusByName(@RequestParam String category_name) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to get staff category ")
+                .message("Failed to get marital status  ")
                 .success(false)
                 .build();
         try {
-            response = staffCategoryService.selectStaffCategoryByName(category_name);
+            response = maritalStatusService.selectMaritalStatusByName(category_name);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception exception) {
             response.setMessage(exception.getMessage());
