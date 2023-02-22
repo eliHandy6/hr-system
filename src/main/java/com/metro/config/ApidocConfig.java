@@ -10,6 +10,12 @@ import org.springframework.context.annotation.Configuration;
 
 import java.io.IOException;
 
+/**
+ * @Author: Lentumunai Mark
+ * Version :1.0.0
+ * Email:marklentumunai@gmail.com
+ **/
+
 @OpenAPIDefinition
 @Configuration
 public class ApidocConfig {
@@ -64,6 +70,14 @@ public class ApidocConfig {
         String[] paths = {"/api/v1/title/**",};
         return GroupedOpenApi.builder()
                 .group("titles")
+                .pathsToMatch(paths)
+                .build();
+    }
+    @Bean
+    public GroupedOpenApi departmentSetups() {
+        String[] paths = {"/api/v1/department/**",};
+        return GroupedOpenApi.builder()
+                .group("departments")
                 .pathsToMatch(paths)
                 .build();
     }
