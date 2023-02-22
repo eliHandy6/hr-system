@@ -97,10 +97,6 @@ public class TitleController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully retrieved all titles",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = com.metro.core.ApiResponse.class))}),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Client Error",
-                    content = @Content),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Title not found ",
-                    content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
                     content = @Content)})
     public ResponseEntity<?> getAllTitles() {
@@ -124,8 +120,6 @@ public class TitleController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully searched for the title",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = com.metro.core.ApiResponse.class))}),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Invalid body",
-                    content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Title not found ",
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
@@ -156,8 +150,6 @@ public class TitleController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully Retrieved the title by Id",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = com.metro.core.ApiResponse.class))}),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Invalid body",
-                    content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Title not found ",
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
