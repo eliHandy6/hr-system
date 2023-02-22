@@ -24,7 +24,6 @@ public class SectionDTO {
     private  String name;
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long sectionId;
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long department_id;
 
 }

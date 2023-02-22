@@ -7,7 +7,7 @@ import com.metro.setups.staff.category.dtos.StaffCategoryDto;
 public interface SectionService {
     ApiResponse createSection(SectionDTO sectionDTO);
 
-    ApiResponse updateSection(Long id, StaffCategoryDto staffCategoryDto);
+    ApiResponse updateSection(Long id, SectionDTO sectionDTO);
 
     ApiResponse getSections();
 

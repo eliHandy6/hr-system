@@ -1,19 +1,20 @@
 package com.metro.setups.sections.controllers;
 
 import com.metro.core.ApiResponse;
+import com.metro.exceptions.ApiResponses;
+import com.metro.exceptions.EmptySpaceExceptionHandler;
 import com.metro.exceptions.ResourceNotFoundException;
+import com.metro.setups.department.dtos.DepartmentDTO;
 import com.metro.setups.sections.dtos.SectionDTO;
 import com.metro.setups.services.SectionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author: Lentumunai Mark
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/section")
+@Tag(name = "section")
 public class SectionController {
     private final SectionService sectionService;
 
@@ -59,6 +61,42 @@ public class SectionController {
             response.setMessage(resourceNotFoundException.getMessage());
             return new ResponseEntity<>(response, HttpStatus.CONFLICT);
         }catch (Exception exception) {
+            response.setMessage(exception.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping("/{id}")
+    @Operation(description = "update the Section")
+    @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully updated",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = com.metro.core.ApiResponse.class))}),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Invalid body",
+                    content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Title not found ",
+                    content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
+                    content = @Content)})
+    public ResponseEntity<?> updateTitle(
+            @PathVariable(value = "id") Long id,
+            @RequestBody @Valid SectionDTO sectionDTO
+    ) {
+        ApiResponse response = ApiResponse.builder()
+                .message("Failed to update Section")
+                .success(false)
+                .data(sectionDTO)
+                .build();
+        try {
+            response = sectionService.updateSection(id, sectionDTO);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (ResourceNotFoundException resourceNotFoundException) {
+            response.setMessage(resourceNotFoundException.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        }catch(EmptySpaceExceptionHandler emptySpaceExceptionHandler){
+            response.setMessage(emptySpaceExceptionHandler.getMessage());
+            return  new ResponseEntity<>(response, HttpStatus.CONFLICT);
+        } catch (Exception exception) {
             response.setMessage(exception.getMessage());
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }

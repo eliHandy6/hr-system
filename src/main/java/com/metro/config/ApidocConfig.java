@@ -81,6 +81,15 @@ public class ApidocConfig {
                 .pathsToMatch(paths)
                 .build();
     }
+    @Bean
+    public GroupedOpenApi sectionSetups() {
+        String[] paths = {"/api/v1/section/**",};
+        return GroupedOpenApi.builder()
+                .group("sections")
+                .pathsToMatch(paths)
+                .build();
+    }
+
 
 
 }
