@@ -1,5 +1,6 @@
 package com.metro.setups.department.services.impl;
 
+import com.metro.core.ApiResponse;
 import com.metro.exceptions.ApiResponses;
 import com.metro.exceptions.DuplicateResourceException;
 import com.metro.exceptions.EmptySpaceExceptionHandler;
@@ -20,8 +21,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public ApiResponses getAllDepartments() {
-        ApiResponses apiResponse = ApiResponses.builder()
+    public ApiResponse getAllDepartments() {
+        ApiResponse apiResponse = ApiResponse.builder()
                 .message("Failed to fetch all the departments")
                 .success(false)
                 .data(null)
@@ -34,8 +35,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public ApiResponses getDepartmentById(Long id) {
-        ApiResponses apiResponse = ApiResponses.builder()
+    public ApiResponse getDepartmentById(Long id) {
+        ApiResponse apiResponse = ApiResponse.builder()
                 .message("Failed to get department by Id")
                 .success(false)
                 .data(null)
@@ -56,8 +57,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public ApiResponses getDepartmentByName(String name) {
-        ApiResponses apiResponse = ApiResponses.builder()
+    public ApiResponse getDepartmentByName(String name) {
+        ApiResponse apiResponse = ApiResponse.builder()
                 .message("Failed to get department by name")
                 .success(false)
                 .data(null)
@@ -75,8 +76,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public ApiResponses updateDepartment(Long id, DepartmentDTO departmentDTO) {
-        ApiResponses apiResponse = ApiResponses.builder()
+    public ApiResponse updateDepartment(Long id, DepartmentDTO departmentDTO) {
+        ApiResponse apiResponse = ApiResponse.builder()
                 .message("Failed to update the department")
                 .success(false)
                 .data(departmentDTO)
@@ -93,8 +94,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public ApiResponses createDepartment(DepartmentDTO departmentDTO) {
-        ApiResponses apiResponse = ApiResponses.builder()
+    public ApiResponse createDepartment(DepartmentDTO departmentDTO) {
+        ApiResponse apiResponse = ApiResponse.builder()
                 .message("Failed to create Department")
                 .success(false)
                 .data(departmentDTO)

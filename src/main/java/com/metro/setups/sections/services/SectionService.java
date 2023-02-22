@@ -1,8 +1,13 @@
-package com.metro.setups.services;
+package com.metro.setups.sections.services;
 
 import com.metro.core.ApiResponse;
 import com.metro.setups.sections.dtos.SectionDTO;
-import com.metro.setups.staff.category.dtos.StaffCategoryDto;
+
+/**
+ * @Author: Lentumunai Mark
+ * Version :1.0.0
+ * Email:marklentumunai@gmail.com
+ **/
 
 public interface SectionService {
     ApiResponse createSection(SectionDTO sectionDTO);

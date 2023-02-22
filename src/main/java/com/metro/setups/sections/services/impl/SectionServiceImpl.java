@@ -1,4 +1,4 @@
-package com.metro.setups.services.impl;
+package com.metro.setups.sections.services.impl;
 
 import com.metro.core.ApiResponse;
 import com.metro.exceptions.DuplicateResourceException;
@@ -9,13 +9,19 @@ import com.metro.setups.department.repositories.DepartmentRepository;
 import com.metro.setups.sections.Entity.Section;
 import com.metro.setups.sections.dtos.SectionDTO;
 import com.metro.setups.sections.respositories.SectionRepository;
-import com.metro.setups.services.SectionService;
+import com.metro.setups.sections.services.SectionService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * @Author: Lentumunai Mark
+ * Version :1.0.0
+ * Email:marklentumunai@gmail.com
+ **/
 
 @Service
 public class SectionServiceImpl implements SectionService {

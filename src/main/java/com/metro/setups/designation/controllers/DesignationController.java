@@ -1,10 +1,10 @@
-package com.metro.setups.sections.controllers;
+package com.metro.setups.designation.controllers;
 
 import com.metro.core.ApiResponse;
 import com.metro.exceptions.EmptySpaceExceptionHandler;
 import com.metro.exceptions.ResourceNotFoundException;
-import com.metro.setups.sections.dtos.SectionDTO;
-import com.metro.setups.sections.services.SectionService;
+import com.metro.setups.designation.dtos.DesignationDTO;
+import com.metro.setups.designation.service.DesignationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -14,25 +14,23 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 /**
  * @Author: Lentumunai Mark
  * Version :1.0.0
  * Email:marklentumunai@gmail.com
  **/
-
 @RestController
-@RequestMapping("/api/v1/section")
-@Tag(name = "section")
-public class SectionController {
-    private final SectionService sectionService;
+@RequestMapping("/api/v1/designation")
+@Tag(name = "Designations")
+public class DesignationController {
+    private final DesignationService designationService;
 
-    public SectionController(SectionService sectionService) {
-        this.sectionService = sectionService;
+    public DesignationController(DesignationService designationService) {
+        this.designationService = designationService;
     }
 
     @PostMapping
-    @Operation(description = "Create the section")
+    @Operation(description = "Create the Designation")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = " Successfully created",
                     content = {@Content(mediaType = "application/json",
@@ -43,17 +41,17 @@ public class SectionController {
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
                     content = @Content)})
-    public ResponseEntity<?> createSection(
+    public ResponseEntity<?> createDesignation(
 
-            @RequestBody @Valid SectionDTO sectionDTO
+            @RequestBody @Valid DesignationDTO designationDTO
             ) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to create Section")
+                .message("Failed to create Designation")
                 .success(false)
-                .data(sectionDTO)
+                .data(designationDTO)
                 .build();
         try {
-            response = sectionService.createSection(sectionDTO);
+            response = designationService.createDesignation(designationDTO);
             return new ResponseEntity<>(response, HttpStatus.CREATED);
         }
         catch (ResourceNotFoundException resourceNotFoundException){
@@ -66,7 +64,7 @@ public class SectionController {
     }
 
     @PutMapping("/{id}")
-    @Operation(description = "update the Section")
+    @Operation(description = "update the Designation")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully updated",
                     content = {@Content(mediaType = "application/json",
@@ -79,15 +77,15 @@ public class SectionController {
                     content = @Content)})
     public ResponseEntity<?> updateSection(
             @PathVariable(value = "id") Long id,
-            @RequestBody @Valid SectionDTO sectionDTO
+            @RequestBody @Valid DesignationDTO designationDTO
     ) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to update Section")
+                .message("Failed to update Designation")
                 .success(false)
-                .data(sectionDTO)
+                .data(designationDTO)
                 .build();
         try {
-            response = sectionService.updateSection(id, sectionDTO);
+            response = designationService.updateDesignation(id, designationDTO);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (ResourceNotFoundException resourceNotFoundException) {
             response.setMessage(resourceNotFoundException.getMessage());
@@ -101,7 +99,7 @@ public class SectionController {
         }
     }
 
-    @Operation(summary = "get all the sections")
+    @Operation(summary = "get all the available designations")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully fetched ",
                     content = {@Content(mediaType = "application/json",
@@ -112,11 +110,11 @@ public class SectionController {
     @GetMapping
     public ResponseEntity<?> getAllSections() {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to fetch the staff sections")
+                .message("Failed to get all the designations")
                 .success(false)
                 .build();
         try {
-            response = sectionService.getSections();
+            response = designationService.getDesignations();
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception exception) {
             response.setMessage(exception.getMessage());
@@ -124,7 +122,8 @@ public class SectionController {
         }
 
     }
-    @Operation(summary = "fetch section based on name")
+
+    @Operation(summary = "fetch designation based on name")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully fetched ",
                     content = {@Content(mediaType = "application/json",
@@ -138,7 +137,7 @@ public class SectionController {
                 .success(false)
                 .build();
         try {
-            response = sectionService.selectSectionByName(section_name);
+            response = designationService.selectDesignationByName(section_name);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception exception) {
             response.setMessage(exception.getMessage());
@@ -146,7 +145,8 @@ public class SectionController {
         }
 
     }
-    @Operation(summary = "fetch section based on id")
+
+    @Operation(summary = "fetch designation based on id")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully fetched ",
                     content = {@Content(mediaType = "application/json",
@@ -158,11 +158,11 @@ public class SectionController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getStaffCategoryById(@PathVariable Long id) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to get section")
+                .message("Failed to get designation")
                 .success(false)
                 .build();
         try {
-            response = sectionService.selectSectionByID(id);
+            response = designationService.selectDesignationByID(id);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (ResourceNotFoundException resourceNotFoundException) {
             response.setMessage(resourceNotFoundException.getMessage());
@@ -172,5 +172,4 @@ public class SectionController {
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 }

@@ -1,6 +1,6 @@
 package com.metro.setups.department.controllers;
 
-import com.metro.exceptions.ApiResponses;
+import com.metro.core.ApiResponse;
 import com.metro.exceptions.DuplicateResourceException;
 import com.metro.exceptions.EmptySpaceExceptionHandler;
 import com.metro.exceptions.ResourceNotFoundException;
@@ -40,7 +40,7 @@ public class DepartmentController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
                     content = @Content)})
     public ResponseEntity<?> getAllTitles() {
-        ApiResponses response = ApiResponses.builder()
+        ApiResponse response = ApiResponse.builder()
                 .message("Failed to get all the titles")
                 .success(false)
                 .data(null)
@@ -70,7 +70,7 @@ public class DepartmentController {
 
             @RequestBody @Valid DepartmentDTO departmentDTO
             ) {
-        ApiResponses response = ApiResponses.builder()
+        ApiResponse response = ApiResponse.builder()
                 .message("Failed to create Department")
                 .success(false)
                 .data(departmentDTO)
@@ -100,7 +100,7 @@ public class DepartmentController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
                     content = @Content)})
     public ResponseEntity<?> getTitleById(@PathVariable Long id) {
-        ApiResponses response = ApiResponses.builder()
+        ApiResponse response = ApiResponse.builder()
                 .message("Failed to get the department by Id")
                 .success(false)
                 .data(null)
@@ -129,7 +129,7 @@ public class DepartmentController {
     public ResponseEntity<?> fetchTitleByName(
             @RequestParam String name
     ) {
-        ApiResponses response = ApiResponses.builder()
+        ApiResponse response = ApiResponse.builder()
                 .message("Failed to get the Department with given name")
                 .success(false)
                 .data(null)
@@ -161,7 +161,7 @@ public class DepartmentController {
             @PathVariable(value = "id") Long id,
             @RequestBody @Valid DepartmentDTO departmentDto
     ) {
-        ApiResponses response = ApiResponses.builder()
+        ApiResponse response = ApiResponse.builder()
                 .message("Failed to update Department")
                 .success(false)
                 .data(departmentDto)
