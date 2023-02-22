@@ -63,7 +63,9 @@ public class ApidocConfig {
 
     @Bean
     public GroupedOpenApi hrSetups() {
-        String[] paths = {"/api/v1/staff-category/**", "/api/v1/job-groups/**"};
+        String[] paths = {"/api/v1/staff-category/**",
+                "/api/v1/job-groups/**",
+                "/api/v1/leave-category/**"};
         return GroupedOpenApi.builder()
                 .group("Hr-Setups")
                 .pathsToMatch(paths)

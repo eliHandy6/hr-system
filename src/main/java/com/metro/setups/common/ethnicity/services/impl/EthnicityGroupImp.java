@@ -161,7 +161,7 @@ public class EthnicityGroupImp implements EthnicGroupService {
                     .ethnicGroupName(ethnicGroup.getEthnicGroupName())
                     .ethnicGroupId(ethnicGroup.getId())
                     .build();
-            response.setMessage("marital status updated  successfully");
+            response.setMessage("ethnic group fetched  successfully");
             response.setData(ethnicGroupDto);
             response.setSuccess(true);
         }
