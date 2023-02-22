@@ -1,6 +1,9 @@
 package com.metro.setups.department.services.impl;
 
+import com.metro.exceptions.APIExceptions;
 import com.metro.exceptions.ApiResponses;
+import com.metro.exceptions.DuplicateResourceException;
+import com.metro.exceptions.EmptySpaceExceptionHandler;
 import com.metro.setups.department.dtos.DepartmentDTO;
 import com.metro.setups.department.entities.Department;
 import com.metro.setups.department.repositories.DepartmentRepository;
@@ -48,6 +51,23 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public ApiResponses createDepartment(DepartmentDTO departmentDTO) {
-        return null;
+        ApiResponses apiResponse = ApiResponses.builder()
+                .message("Failed to create title")
+                .success(false)
+                .data(departmentDTO)
+                .build();
+        String name = departmentDTO.getName();
+        if((name.trim()).length() == 0) throw new EmptySpaceExceptionHandler("Name of the department cannot be empty");
+        if (departmentRepository.findDepartmentByName(name).isPresent()) {
+            throw new DuplicateResourceException("department " + name +" already exists in the database try another");
+        }
+
+        Department department = new Department(departmentDTO.getName(), departmentDTO.getManager_id());
+        department = departmentRepository.save(department);
+        departmentDTO.setId((Long) department.getId());
+        apiResponse.setData(departmentDTO);
+        apiResponse.setMessage("Created Department Successfully");
+        apiResponse.setSuccess(true);
+        return apiResponse;
     }
 }

@@ -1,10 +1,7 @@
 package com.metro.setups.titles.services.impl;
 
 import com.metro.core.ApiResponse;
-import com.metro.exceptions.APIExceptions;
-import com.metro.exceptions.ApiResponses;
-import com.metro.exceptions.DuplicateResourceException;
-import com.metro.exceptions.ResourceNotFoundException;
+import com.metro.exceptions.*;
 import com.metro.setups.titles.Entity.Titles;
 import com.metro.setups.titles.dtos.TitleDto;
 import com.metro.setups.titles.repositories.TitleRepository;
@@ -43,7 +40,7 @@ public class TitleServiceImpl implements TitleService {
                 .data(titleDto)
                 .build();
         String name = titleDto.getName();
-        if((name.trim()).length() == 0) throw APIExceptions.badRequest("Name cannot be empty");
+        if((name.trim()).length() == 0) throw new EmptySpaceExceptionHandler("Name cannot be empty");
         if (titleRepository.findTitlesByName(name).isPresent()) {
             throw new DuplicateResourceException("Title " + name +" already exists in the database try another");
         }
