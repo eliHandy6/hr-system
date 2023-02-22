@@ -10,7 +10,12 @@ import com.metro.setups.sections.Entity.Section;
 import com.metro.setups.sections.dtos.SectionDTO;
 import com.metro.setups.sections.respositories.SectionRepository;
 import com.metro.setups.services.SectionService;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class SectionServiceImpl implements SectionService {
     private final SectionRepository sectionRepository;
@@ -72,17 +77,55 @@ public class SectionServiceImpl implements SectionService {
 
     @Override
     public ApiResponse getSections() {
-        return null;
+        List<SectionDTO> sections = new ArrayList<>();
+        ApiResponse response = ApiResponse.builder()
+                .success(false)
+                .data(sections)
+                .message("No record is existing")
+                .build();
+        List<Section> section = sectionRepository.findAll(Sort.by("name").ascending());
+        if (!section.isEmpty()) {
+            sections.addAll(section.stream().map(e -> {
+                SectionDTO sectionDTO = SectionDTO.builder()
+                        .name(e.getName())
+                        .sectionId(e.getId())
+                        .department_id(e.getDepartment().getId())
+                        .build();
+                return sectionDTO;
+            }).toList());
+        }
+        response.setMessage("sections fetched successfully");
+        response.setData(sections);
+        response.setSuccess(true);
+        return response;
     }
 
-    @Override
-    public ApiResponse deleteSectionById(Long id) {
-        return null;
-    }
+
 
     @Override
     public ApiResponse selectSectionByName(String name) {
-        return null;
+        List<SectionDTO> sections = new ArrayList<>();
+        ApiResponse response = ApiResponse.builder()
+                .message("No section is existing")
+                .success(false)
+                .data(sections)
+                .build();
+        List<Section> res = sectionRepository.findSectionByNameIgnoreCase(name);
+        if (!res.isEmpty()) {
+            sections.addAll(res.stream().map(e -> {
+                SectionDTO sectionDTO = SectionDTO.builder()
+                        .name(e.getName())
+                        .sectionId(e.getId())
+                        .department_id(e.getDepartment().getId())
+                        .build();
+                return sectionDTO;
+            }).toList());
+
+        }
+        response.setMessage("sections fetched successfully by name");
+        response.setData(sections);
+        response.setSuccess(true);
+        return response;
     }
 
     @Override

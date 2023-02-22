@@ -11,8 +11,6 @@ public interface SectionService {
 
     ApiResponse getSections();
 
-    ApiResponse deleteSectionById(Long id);
-
     ApiResponse selectSectionByName(String name);
 
     ApiResponse selectSectionByID(Long id);

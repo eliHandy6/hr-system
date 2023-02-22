@@ -1,15 +1,14 @@
 package com.metro.setups.sections.controllers;
 
 import com.metro.core.ApiResponse;
-import com.metro.exceptions.ApiResponses;
 import com.metro.exceptions.EmptySpaceExceptionHandler;
 import com.metro.exceptions.ResourceNotFoundException;
-import com.metro.setups.department.dtos.DepartmentDTO;
 import com.metro.setups.sections.dtos.SectionDTO;
 import com.metro.setups.services.SectionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -44,7 +43,7 @@ public class SectionController {
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
                     content = @Content)})
-    public ResponseEntity<?> createDepartment(
+    public ResponseEntity<?> createSection(
 
             @RequestBody @Valid SectionDTO sectionDTO
             ) {
@@ -78,7 +77,7 @@ public class SectionController {
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
                     content = @Content)})
-    public ResponseEntity<?> updateTitle(
+    public ResponseEntity<?> updateSection(
             @PathVariable(value = "id") Long id,
             @RequestBody @Valid SectionDTO sectionDTO
     ) {
@@ -100,6 +99,52 @@ public class SectionController {
             response.setMessage(exception.getMessage());
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @Operation(summary = "get all the sections")
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully fetched ",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ApiResponse.class))}),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
+                    content = @Content)})
+
+    @GetMapping
+    public ResponseEntity<?> getAllSections() {
+        ApiResponse response = ApiResponse.builder()
+                .message("Failed to fetch the staff sections")
+                .success(false)
+                .build();
+        try {
+            response = sectionService.getSections();
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception exception) {
+            response.setMessage(exception.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+    @Operation(summary = "fetch section based on name")
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully fetched ",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ApiResponse.class))}),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
+                    content = @Content)})
+    @GetMapping("/search")
+    public ResponseEntity<?> getSectionByName(@RequestParam String section_name) {
+        ApiResponse response = ApiResponse.builder()
+                .message("Failed to get section ")
+                .success(false)
+                .build();
+        try {
+            response = sectionService.selectSectionByName(section_name);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception exception) {
+            response.setMessage(exception.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 
 }
