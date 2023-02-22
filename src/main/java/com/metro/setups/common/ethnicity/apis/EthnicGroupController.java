@@ -1,10 +1,12 @@
-package com.metro.setups.common.maritalstatus.apis;
+package com.metro.setups.common.ethnicity.apis;
 
 import com.metro.core.ApiResponse;
 import com.metro.exceptions.DuplicateResourceException;
 import com.metro.exceptions.ResourceNotFoundException;
-import com.metro.setups.common.maritalstatus.dtos.MaritalStatusDto;
-import com.metro.setups.common.maritalstatus.services.MaritalStatusService;
+import com.metro.setups.common.ethnicity.dtos.EthnicGroupDto;
+import com.metro.setups.common.ethnicity.services.EthnicGroupService;
+import com.metro.setups.staff.category.dtos.StaffCategoryDto;
+import com.metro.setups.staff.category.services.StaffCategoryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -24,15 +26,16 @@ import org.springframework.web.bind.annotation.*;
  **/
 
 @RestController
-@RequestMapping("api/v1/marital-status")
-@Tag(name = "Marital Status")
+@RequestMapping("api/v1/ethnicity")
+@Tag(name = "Ethnicity")
 @RequiredArgsConstructor
 @Slf4j
-public class MaritalStatusController {
+public class EthnicGroupController {
 
-    private final MaritalStatusService maritalStatusService;
 
-    @Operation(summary = "create marital status")
+    private final EthnicGroupService ethnicGroupService;
+
+    @Operation(summary = "create ethnicity")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = " Successfully created",
                     content = {@Content(mediaType = "application/json",
@@ -44,14 +47,14 @@ public class MaritalStatusController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
                     content = @Content)})
     @PostMapping
-    public ResponseEntity<?> createMaritalStatus(@RequestBody @Valid MaritalStatusDto maritalStatusDto) {
+    public ResponseEntity<?> createEthnicity(@RequestBody @Valid EthnicGroupDto ethnicGroupDto) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to save the marital status")
+                .message("Failed to save the ethnicity")
                 .success(false)
-                .data(maritalStatusDto)
+                .data(ethnicGroupDto)
                 .build();
         try {
-            response = maritalStatusService.createMaritalStatus(maritalStatusDto);
+            response = ethnicGroupService.createEthnicGroup(ethnicGroupDto);
             return new ResponseEntity<>(response, HttpStatus.CREATED);
         } catch (DuplicateResourceException duplicateResourceException) {
             response.setMessage(duplicateResourceException.getMessage());
@@ -64,28 +67,28 @@ public class MaritalStatusController {
     }
 
 
-    @Operation(summary = "update marital status")
+    @Operation(summary = "update ethnicity")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully updated ",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = ApiResponse.class))}),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Invalid body",
                     content = @Content),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "marital status not found ",
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "ethnicity not found ",
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "409", description = "Conflict ",
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
                     content = @Content)})
     @PutMapping({"/{id}"})
-    public ResponseEntity<?> updateMaritalStatus(@PathVariable Long id, @RequestBody @Valid MaritalStatusDto maritalStatusDto) {
+    public ResponseEntity<?> updateEthnicity(@PathVariable Long id, @RequestBody @Valid EthnicGroupDto ethnicGroupDto) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to update the marital status")
+                .message("Failed to update the ethnicity")
                 .success(false)
-                .data(maritalStatusDto)
+                .data(ethnicGroupDto)
                 .build();
         try {
-            response = maritalStatusService.updateMaritalStatus(id, maritalStatusDto);
+            response = ethnicGroupService.updateEthnicGroup(id, ethnicGroupDto);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (ResourceNotFoundException resourceNotFoundException) {
             response.setMessage(resourceNotFoundException.getMessage());
@@ -100,7 +103,7 @@ public class MaritalStatusController {
 
     }
 
-    @Operation(summary = "get marital  status")
+    @Operation(summary = "get ethnic groups")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully fetched ",
                     content = {@Content(mediaType = "application/json",
@@ -109,13 +112,13 @@ public class MaritalStatusController {
                     content = @Content)})
 
     @GetMapping
-    public ResponseEntity<?> getMaritalStatus() {
+    public ResponseEntity<?> getAllEthnicGroups() {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to fetch the marital status")
+                .message("Failed to fetch the ethnic groups")
                 .success(false)
                 .build();
         try {
-            response = maritalStatusService.getMaritalStatuses();
+            response = ethnicGroupService.getEthnicGroups();
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception exception) {
             response.setMessage(exception.getMessage());
@@ -124,23 +127,23 @@ public class MaritalStatusController {
 
     }
 
-    @Operation(summary = "fetch marital status based on id")
+    @Operation(summary = "fetch ethnic group on id")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully fetched ",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = ApiResponse.class))}),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "marital status not found ",
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "ethnic group  not found ",
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
                     content = @Content)})
     @GetMapping("/{id}")
-    public ResponseEntity<?> getMaritalStatusByID(@PathVariable Long id) {
+    public ResponseEntity<?> getEthnicGroupOnId(@PathVariable Long id) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to get marital status ")
+                .message("Failed to get ethnic group")
                 .success(false)
                 .build();
         try {
-            response = maritalStatusService.selectMaritalStatusByID(id);
+            response = ethnicGroupService.selectEthnicGroupByID(id);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (ResourceNotFoundException resourceNotFoundException) {
             response.setMessage(resourceNotFoundException.getMessage());
@@ -152,7 +155,7 @@ public class MaritalStatusController {
     }
 
 
-    @Operation(summary = "fetch marital status  based on name")
+    @Operation(summary = "fetch ethnic group based on name")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully fetched ",
                     content = {@Content(mediaType = "application/json",
@@ -160,13 +163,13 @@ public class MaritalStatusController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
                     content = @Content)})
     @GetMapping("/search")
-    public ResponseEntity<?> getMaritalStatusByName(@RequestParam String status_name) {
+    public ResponseEntity<?> getEthnicGroupByName(@RequestParam String group_name) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to get marital status  ")
+                .message("Failed to get ethnic group ")
                 .success(false)
                 .build();
         try {
-            response = maritalStatusService.selectMaritalStatusByName(status_name);
+            response = ethnicGroupService.selectEthnicGroupByName(group_name);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception exception) {
             response.setMessage(exception.getMessage());
@@ -174,5 +177,6 @@ public class MaritalStatusController {
         }
 
     }
+
 
 }

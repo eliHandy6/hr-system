@@ -6,8 +6,8 @@ import com.metro.exceptions.ResourceNotFoundException;
 import com.metro.setups.common.maritalstatus.dtos.MaritalStatusDto;
 import com.metro.setups.common.maritalstatus.repositories.MaritalStatusRepository;
 import com.metro.setups.common.maritalstatus.services.MaritalStatusService;
-import com.metro.setups.common.maritalstatus.specifications.MaritalStatus;
 
+import com.metro.setups.common.maritalstatus.specifications.MaritalStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -66,7 +66,7 @@ public class MaritalStatusServiceImpl implements MaritalStatusService {
                 .data(maritalStatusDto)
                 .build();
 
-        MaritalStatus maritalStatus = maritalStatusRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
+        com.metro.setups.common.maritalstatus.specifications.MaritalStatus maritalStatus = maritalStatusRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
                 "marital status not found with id  " + id));
 
         if (existsMaritalStatusName(maritalStatusDto.getMaritalStatusName())) {
@@ -98,7 +98,7 @@ public class MaritalStatusServiceImpl implements MaritalStatusService {
                 .message("No record is existing")
                 .build();
 
-        List<MaritalStatus> statusNameList = maritalStatusRepository.findAll(Sort.by("maritalStatusName").ascending());
+        List<com.metro.setups.common.maritalstatus.specifications.MaritalStatus> statusNameList = maritalStatusRepository.findAll(Sort.by("maritalStatusName").ascending());
         if (!statusNameList.isEmpty()) {
             maritalStatusDtos.addAll(statusNameList.stream().map(e -> {
                 MaritalStatusDto maritalStatusDto = MaritalStatusDto.builder()
