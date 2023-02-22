@@ -53,11 +53,20 @@ public class ApidocConfig {
 
     @Bean
     public GroupedOpenApi staffSetups() {
-        String[] paths = {"/api/v1/staff-category/**"};
+        String[] paths = {"/api/v1/staff-category/**",};
         return GroupedOpenApi.builder()
                 .group("Staff")
                 .pathsToMatch(paths)
                 .build();
     }
+    @Bean
+    public GroupedOpenApi titleSetups() {
+        String[] paths = {"/api/v1/title/**",};
+        return GroupedOpenApi.builder()
+                .group("titles")
+                .pathsToMatch(paths)
+                .build();
+    }
+
 
 }

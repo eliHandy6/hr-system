@@ -28,8 +28,6 @@ public class RoleServiceImp implements RoleService {
 
     @Override
     public RoleData createRole(RoleData roleData) {
-        //check if user exists
-        //then i can create role
         if (roleNameExists(roleData.getName()).isPresent()) {
             //throw exception username exists
         }

@@ -5,7 +5,7 @@ import com.metro.auth.dtos.UserData;
 import com.metro.auth.services.AuthenticationService;
 import com.metro.auth.services.UserService;
 import com.metro.exceptions.APIExceptions;
-import com.metro.exceptions.ApiResponse;
+import com.metro.exceptions.ApiResponses;
 import com.metro.auth.repositories.RoleRepository;
 import com.metro.auth.repositories.UserRepository;
 import com.metro.auth.dtos.AuthenticationRequest;
@@ -50,10 +50,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             throw APIExceptions.badRequest("Invalid username i.e should not contain whiteSpaces");
         System.out.println("passed first test case");
         if (userRepository.existsByUsername(data.getUsername()))
-            return new ResponseEntity(new ApiResponse(false, "Username already taken"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new ApiResponses(false, "Username already taken"), HttpStatus.BAD_REQUEST);
         System.out.println("passed second test case");
         if (userRepository.existsByEmail(data.getEmail()))
-            return new ResponseEntity(new ApiResponse(false, "Email is already taken"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new ApiResponses(false, "Email is already taken"), HttpStatus.BAD_REQUEST);
         System.out.println("passed the third test case");
         //String password = PasswordGenerator.generate(12);
 
@@ -74,7 +74,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         User response = userRepository.save(user);
         //send email to user with credentials
         URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("api/v1/auth/users/{username}").buildAndExpand(response.getUsername()).toUri();
-        return ResponseEntity.created(location).body(new ApiResponse(true, "created user succesfully"));
+        return ResponseEntity.created(location).body(new ApiResponses(true, "created user succesfully"));
     }
 
     public boolean containsWhitespace(String str) {
@@ -95,18 +95,18 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     public ResponseEntity<?> resetPassword(PasswordResetBody passwordResetBody) {
-        final User user = (User) userService.findUserByEmail(passwordResetBody.getEmail()).orElseThrow(() -> APIExceptions.notFound("No user with email {0} Found", passwordResetBody.getPassword()));
+        final User user = (User) userService.findUserByEmail(passwordResetBody.getEmail()).orElseThrow(() -> APIExceptions.notFound("No user with email {0} Found", passwordResetBody.getEmail()));
         //generate random code then cache it and compare with user input
         user.setPassword(passwordEncoder.encode(passwordResetBody.getPassword()));
         userRepository.save(user);
-        return ResponseEntity.ok(new ApiResponse(true, "Password Successfully changed"));
+        return ResponseEntity.ok(new ApiResponses(true, "Password Successfully changed"));
 
     }
     public ResponseEntity<?> updatePassword(PasswordResetBody passwordResetBody){
-        final User user = (User) userService.findUserByEmail(passwordResetBody.getEmail()).orElseThrow(() -> APIExceptions.notFound("No user with email {0} Found", passwordResetBody.getPassword()));
+        final User user = (User) userService.findUserByEmail(passwordResetBody.getEmail()).orElseThrow(() -> APIExceptions.notFound("No user with email {0} Found", passwordResetBody.getEmail()));
         user.setPassword(passwordEncoder.encode(passwordResetBody.getPassword()));
         userRepository.save(user);
-        return ResponseEntity.ok(new ApiResponse(true, "Password Successfully changed"));
+        return ResponseEntity.ok(new ApiResponses(true, "Password Successfully changed"));
 
     }
 }

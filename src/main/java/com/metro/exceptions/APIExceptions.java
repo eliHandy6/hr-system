@@ -28,4 +28,11 @@ public class APIExceptions extends  RuntimeException{
                 new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, MessageFormat.format(message, args))
         );
     }
+    public static  APIExceptions alreadyExists(final  String message, final Object... args){
+        return new APIExceptions(
+                new ApiError(
+                        HttpStatus.CONFLICT, MessageFormat.format(message, args)
+                )
+        );
+    }
 }
