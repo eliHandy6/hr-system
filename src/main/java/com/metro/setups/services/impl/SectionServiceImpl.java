@@ -10,6 +10,7 @@ import com.metro.setups.sections.Entity.Section;
 import com.metro.setups.sections.dtos.SectionDTO;
 import com.metro.setups.sections.respositories.SectionRepository;
 import com.metro.setups.services.SectionService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -130,7 +131,25 @@ public class SectionServiceImpl implements SectionService {
 
     @Override
     public ApiResponse selectSectionByID(Long id) {
-        return null;
+        ApiResponse response = ApiResponse.builder()
+                .message("Failed to fetch the section")
+                .success(false)
+                .build();
+
+        Section section = sectionRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
+                "section with id not found  " + id));
+        if (StringUtils.isNotEmpty(section.getId().toString())) {
+            SectionDTO sectionDTO = SectionDTO.builder()
+                    .name(section.getName())
+                    .sectionId(section.getId())
+                    .department_id(section.getDepartment().getId())
+                    .build();
+            sectionDTO.setSectionId(Long.valueOf(section.getId().longValue()));
+            response.setMessage("Section fetched  successfully");
+            response.setData(sectionDTO);
+            response.setSuccess(true);
+        }
+        return response;
     }
 
     @Override

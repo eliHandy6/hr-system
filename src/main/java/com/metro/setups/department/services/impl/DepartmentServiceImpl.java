@@ -1,11 +1,13 @@
 package com.metro.setups.department.services.impl;
 
-import com.metro.exceptions.*;
+import com.metro.exceptions.ApiResponses;
+import com.metro.exceptions.DuplicateResourceException;
+import com.metro.exceptions.EmptySpaceExceptionHandler;
+import com.metro.exceptions.ResourceNotFoundException;
 import com.metro.setups.department.dtos.DepartmentDTO;
 import com.metro.setups.department.entities.Department;
 import com.metro.setups.department.repositories.DepartmentRepository;
 import com.metro.setups.department.services.DepartmentService;
-import com.metro.setups.titles.Entity.Titles;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

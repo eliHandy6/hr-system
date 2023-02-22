@@ -146,5 +146,31 @@ public class SectionController {
         }
 
     }
+    @Operation(summary = "fetch section based on id")
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully fetched ",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ApiResponse.class))}),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "section not found ",
+                    content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
+                    content = @Content)})
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getStaffCategoryById(@PathVariable Long id) {
+        ApiResponse response = ApiResponse.builder()
+                .message("Failed to get section")
+                .success(false)
+                .build();
+        try {
+            response = sectionService.selectSectionByID(id);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (ResourceNotFoundException resourceNotFoundException) {
+            response.setMessage(resourceNotFoundException.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        } catch (Exception exception) {
+            response.setMessage(exception.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 }
