@@ -163,7 +163,7 @@ public class MaritalStatusServiceImpl implements MaritalStatusService {
                     .maritalStatusId(maritalStatus.getId())
                     .maritalStatusName(maritalStatus.getMaritalStatusName())
                     .build();
-            response.setMessage("marital status updated  successfully");
+            response.setMessage("marital status fetched  successfully");
             response.setData(maritalStatusDto);
             response.setSuccess(true);
         }

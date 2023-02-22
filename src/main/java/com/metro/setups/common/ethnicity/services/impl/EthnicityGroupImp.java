@@ -77,7 +77,7 @@ public class EthnicityGroupImp implements EthnicGroupService {
             );
         }
 
-        ethnicGroup.setEthnicGroupName(ethnicGroup.getEthnicGroupName());
+        ethnicGroup.setEthnicGroupName(ethnicGroupDto.getEthnicGroupName());
         ethnicGroup = ethnicGroupRepository.save(ethnicGroup);
 
         if (StringUtils.isNotEmpty(ethnicGroup.getId().toString())) {

@@ -53,7 +53,7 @@ public class ApidocConfig {
 
     @Bean
     public GroupedOpenApi commonSetups() {
-        String[] paths = {"/api/v1/marital-status/**", "/api/v1/ethnicity/**"};
+        String[] paths = {"/api/v1/marital-status/**", "/api/v1/ethnicity/**","/api/v1/nationality/**"};
         return GroupedOpenApi.builder()
                 .group("Common-Setups")
                 .pathsToMatch(paths)
