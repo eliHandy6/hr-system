@@ -31,7 +31,8 @@ public class BusinessUnitImpl implements BusinessUnitService {
 
     @Override
     public ApiResponse createBusinessUnit(BusinessUnitDto businessUnitDto) {
-        log.info("Saving business unit {}", businessUnitDto.getBusinessUnitName());
+        log.info("Saving business unit {}", businessUnitDto.getBusinessUnitName()
+        );
         ApiResponse response = ApiResponse.builder()
                 .message("Failed to save the business unit")
                 .success(false)
