@@ -59,7 +59,12 @@ public class ApidocConfig {
 
     @Bean
     public GroupedOpenApi commonSetups() {
-        String[] paths = {"/api/v1/marital-status/**", "/api/v1/ethnicity/**", "/api/v1/nationality/**"};
+        String[] paths = {"/api/v1/marital-status/**",
+                "/api/v1/ethnicity/**",
+                "/api/v1/nationality/**"
+                , "/api/v1/district/**",
+                "/api/v1/title/**"
+        };
         return GroupedOpenApi.builder()
                 .group("Common-Setups")
                 .pathsToMatch(paths)
@@ -71,52 +76,14 @@ public class ApidocConfig {
     public GroupedOpenApi hrSetups() {
         String[] paths = {"/api/v1/staff-category/**",
                 "/api/v1/job-groups/**",
-                "/api/v1/leave-category/**"};
+                "/api/v1/leave-category/**",
+                "/api/v1/department/**",
+                "/api/v1/section/**",
+                "/api/v1/designation/**",
+                "/api/v1/business-units/**"
+        };
         return GroupedOpenApi.builder()
                 .group("Hr-Setups")
-                .pathsToMatch(paths)
-                .build();
-    }
-
-    @Bean
-    public GroupedOpenApi titleSetups() {
-        String[] paths = {"/api/v1/title/**",};
-        return GroupedOpenApi.builder()
-                .group("titles")
-                .pathsToMatch(paths)
-                .build();
-    }
-    @Bean
-    public GroupedOpenApi departmentSetups() {
-        String[] paths = {"/api/v1/department/**",};
-        return GroupedOpenApi.builder()
-                .group("departments")
-                .pathsToMatch(paths)
-                .build();
-    }
-    @Bean
-    public GroupedOpenApi sectionSetups() {
-        String[] paths = {"/api/v1/section/**",};
-        return GroupedOpenApi.builder()
-                .group("sections")
-                .pathsToMatch(paths)
-                .build();
-    }
-
-    @Bean
-    public GroupedOpenApi designationSetups() {
-        String[] paths = {"/api/v1/designation/**",};
-        return GroupedOpenApi.builder()
-                .group("designations")
-                .pathsToMatch(paths)
-                .build();
-    }
-
-    @Bean
-    public GroupedOpenApi districtSetups() {
-        String[] paths = {"/api/v1/district/**",};
-        return GroupedOpenApi.builder()
-                .group("districts")
                 .pathsToMatch(paths)
                 .build();
     }

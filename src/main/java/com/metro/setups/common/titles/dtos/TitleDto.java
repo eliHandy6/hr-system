@@ -1,4 +1,4 @@
-package com.metro.setups.titles.dtos;
+package com.metro.setups.common.titles.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;

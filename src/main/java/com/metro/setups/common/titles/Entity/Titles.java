@@ -1,7 +1,6 @@
-package com.metro.setups.titles.Entity;
+package com.metro.setups.common.titles.Entity;
 
 import com.metro.audit.Auditable;
-import com.metro.setups.titles.dtos.TitleDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

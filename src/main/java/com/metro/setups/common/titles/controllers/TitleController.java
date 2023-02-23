@@ -1,8 +1,8 @@
-package com.metro.setups.titles.controllers;
+package com.metro.setups.common.titles.controllers;
 
 import com.metro.exceptions.*;
-import com.metro.setups.titles.dtos.TitleDto;
-import com.metro.setups.titles.services.TitleService;
+import com.metro.setups.common.titles.dtos.TitleDto;
+import com.metro.setups.common.titles.services.TitleService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
