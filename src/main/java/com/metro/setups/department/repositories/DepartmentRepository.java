@@ -1,7 +1,6 @@
 package com.metro.setups.department.repositories;
 
 import com.metro.setups.department.entities.Department;
-import com.metro.setups.titles.Entity.Titles;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

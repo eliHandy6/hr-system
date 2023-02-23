@@ -1,8 +1,7 @@
-package com.metro.setups.titles.services;
+package com.metro.setups.common.titles.services;
 
-import com.metro.core.ApiResponse;
 import com.metro.exceptions.ApiResponses;
-import com.metro.setups.titles.dtos.TitleDto;
+import com.metro.setups.common.titles.dtos.TitleDto;
 
 public interface TitleService {
     ApiResponses createTitle(TitleDto titleDto);

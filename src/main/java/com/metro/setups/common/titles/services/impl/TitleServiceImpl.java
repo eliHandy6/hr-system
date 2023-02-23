@@ -1,11 +1,10 @@
-package com.metro.setups.titles.services.impl;
+package com.metro.setups.common.titles.services.impl;
 
-import com.metro.core.ApiResponse;
 import com.metro.exceptions.*;
-import com.metro.setups.titles.Entity.Titles;
-import com.metro.setups.titles.dtos.TitleDto;
-import com.metro.setups.titles.repositories.TitleRepository;
-import com.metro.setups.titles.services.TitleService;
+import com.metro.setups.common.titles.Entity.Titles;
+import com.metro.setups.common.titles.dtos.TitleDto;
+import com.metro.setups.common.titles.repositories.TitleRepository;
+import com.metro.setups.common.titles.services.TitleService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
