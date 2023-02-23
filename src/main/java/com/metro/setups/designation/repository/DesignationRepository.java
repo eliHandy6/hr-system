@@ -15,5 +15,6 @@ import java.util.List;
 @Repository
 public interface DesignationRepository extends JpaRepository<Designation, Long> {
     List<Designation> findDesignationByNameIgnoreCase(String name);
+    List<Designation> findDesignationBySectionId(Long id);
     boolean existsDesignationByNameIgnoreCase(String name);
 }
