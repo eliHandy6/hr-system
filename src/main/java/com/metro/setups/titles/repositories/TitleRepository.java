@@ -7,6 +7,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface TitleRepository extends JpaRepository<Titles, Long> {
-    Optional<Titles> findTitlesByName(String name);
+    Optional<Titles> findTitlesByNameIgnoreCase(String name);
 
 }

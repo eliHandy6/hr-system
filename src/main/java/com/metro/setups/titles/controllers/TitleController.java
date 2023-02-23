@@ -1,8 +1,6 @@
 package com.metro.setups.titles.controllers;
 
-import com.metro.exceptions.APIExceptions;
-import com.metro.exceptions.ApiResponses;
-import com.metro.exceptions.ResourceNotFoundException;
+import com.metro.exceptions.*;
 import com.metro.setups.titles.dtos.TitleDto;
 import com.metro.setups.titles.services.TitleService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -13,6 +11,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+/*
+*/
 
 @RestController
 @RequestMapping("/api/v1/title")
@@ -48,10 +48,15 @@ public class TitleController {
         try {
             response = titleService.createTitle(titleDto);
             return new ResponseEntity<>(response, HttpStatus.CREATED);
-        } catch (APIExceptions apiExceptions) {
+        } catch (
+                EmptySpaceExceptionHandler apiExceptions) {
             response.setMessage(apiExceptions.getMessage());
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
-        } catch (Exception exception) {
+        } catch (
+                DuplicateResourceException duplicateResourceException){
+            response.setMessage(duplicateResourceException.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+        }catch (Exception exception) {
             response.setMessage(exception.getMessage());
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
