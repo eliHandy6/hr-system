@@ -1022,3 +1022,80 @@
 2023-02-22 21:13:49 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2023-02-22 21:13:49 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2023-02-22 21:13:49 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-02-22 22:43:33 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-02-22 22:43:33 [main] INFO  com.metro.HrApplication - Starting HrApplication using Java 18 with PID 16960 (C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes started by mwairimu in C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main)
+2023-02-22 22:43:33 [main] INFO  com.metro.HrApplication - No active profile set, falling back to 1 default profile: "default"
+2023-02-22 22:43:35 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-02-22 22:43:35 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 158 ms. Found 10 JPA repository interfaces.
+2023-02-22 22:43:37 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8200 (http)
+2023-02-22 22:43:37 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8200"]
+2023-02-22 22:43:37 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-02-22 22:43:37 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.4]
+2023-02-22 22:43:37 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-02-22 22:43:37 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3796 ms
+2023-02-22 22:43:37 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-02-22 22:43:38 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.6.Final
+2023-02-22 22:43:38 [main] WARN  org.hibernate.orm.deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-02-22 22:43:38 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-02-22 22:43:39 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@45ad3cd8
+2023-02-22 22:43:39 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-02-22 22:43:39 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-02-22 22:43:41 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-02-22 22:43:41 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-02-22 22:43:42 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-02-22 22:43:44 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 13 endpoint(s) beneath base path '/actuator'
+2023-02-22 22:43:44 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@346e76ad, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@47bcd95a, org.springframework.security.web.context.SecurityContextHolderFilter@352bea0e, org.springframework.security.web.header.HeaderWriterFilter@17616c07, org.springframework.security.web.authentication.logout.LogoutFilter@56d189d0, com.metro.config.security.JwtAuthenticationFilter@7fd7085d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@75381b61, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2801ccb3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3fae1ec9, org.springframework.security.web.session.SessionManagementFilter@7aac6d13, org.springframework.security.web.access.ExceptionTranslationFilter@47483211, org.springframework.security.web.access.intercept.AuthorizationFilter@67629872]
+2023-02-22 22:43:45 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8200"]
+2023-02-22 22:43:45 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8200 (http) with context path ''
+2023-02-22 22:43:45 [main] INFO  com.metro.HrApplication - Started HrApplication in 12.999 seconds (process running for 14.315)
+2023-02-22 22:43:46 [RMI TCP Connection(2)-172.28.176.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-02-22 22:43:46 [RMI TCP Connection(2)-172.28.176.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-02-22 22:43:46 [RMI TCP Connection(2)-172.28.176.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-02-22 22:43:57 [http-nio-8200-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 667 ms
+2023-02-22 22:44:16 [http-nio-8200-exec-10] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 273 ms
+2023-02-22 22:44:38 [http-nio-8200-exec-1] INFO  c.m.s.d.s.impl.DistrictServiceImpl - Saving district Samburu
+2023-02-22 22:44:53 [http-nio-8200-exec-3] INFO  c.m.s.d.s.impl.DistrictServiceImpl - Saving district Nairobi
+2023-02-22 22:45:02 [http-nio-8200-exec-4] INFO  c.m.s.d.s.impl.DistrictServiceImpl - Saving district Nakuru
+2023-02-22 22:45:12 [http-nio-8200-exec-8] INFO  c.m.s.d.s.impl.DistrictServiceImpl - Saving district Bomet
+2023-02-22 22:45:39 [http-nio-8200-exec-7] INFO  c.m.s.d.s.impl.DistrictServiceImpl - selecting Districts  by name samburu
+2023-02-22 22:45:58 [http-nio-8200-exec-9] INFO  c.m.s.d.s.impl.DistrictServiceImpl - getting all districts ...... {}
+2023-02-22 22:46:18 [http-nio-8200-exec-10] INFO  c.m.s.d.s.impl.DistrictServiceImpl - selecting district by id 3
+2023-02-22 22:46:46 [http-nio-8200-exec-1] INFO  c.m.s.d.s.impl.DistrictServiceImpl - updating district with id 2
+2023-02-22 22:58:20 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-02-22 22:58:20 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-02-22 22:58:20 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-02-22 22:58:33 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-02-22 22:58:33 [main] INFO  com.metro.HrApplication - Starting HrApplication using Java 18 with PID 11012 (C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes started by mwairimu in C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main)
+2023-02-22 22:58:33 [main] INFO  com.metro.HrApplication - No active profile set, falling back to 1 default profile: "default"
+2023-02-22 22:58:35 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-02-22 22:58:35 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 175 ms. Found 10 JPA repository interfaces.
+2023-02-22 22:58:36 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8200 (http)
+2023-02-22 22:58:36 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8200"]
+2023-02-22 22:58:36 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-02-22 22:58:36 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.4]
+2023-02-22 22:58:37 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-02-22 22:58:37 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3358 ms
+2023-02-22 22:58:37 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-02-22 22:58:37 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.6.Final
+2023-02-22 22:58:37 [main] WARN  org.hibernate.orm.deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-02-22 22:58:38 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-02-22 22:58:38 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7962a746
+2023-02-22 22:58:38 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-02-22 22:58:38 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-02-22 22:58:40 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-02-22 22:58:40 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-02-22 22:58:41 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-02-22 22:58:42 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 13 endpoint(s) beneath base path '/actuator'
+2023-02-22 22:58:43 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1cdbc986, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2823bd30, org.springframework.security.web.context.SecurityContextHolderFilter@5fb392e, org.springframework.security.web.header.HeaderWriterFilter@1aaa3406, org.springframework.security.web.authentication.logout.LogoutFilter@188500e9, com.metro.config.security.JwtAuthenticationFilter@1a0e5c0c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@62525579, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6c80b1d2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6e1a8e78, org.springframework.security.web.session.SessionManagementFilter@17616c07, org.springframework.security.web.access.ExceptionTranslationFilter@4b60ff1c, org.springframework.security.web.access.intercept.AuthorizationFilter@14941b06]
+2023-02-22 22:58:43 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8200"]
+2023-02-22 22:58:43 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8200 (http) with context path ''
+2023-02-22 22:58:43 [main] INFO  com.metro.HrApplication - Started HrApplication in 11.222 seconds (process running for 12.808)
+2023-02-22 22:58:44 [RMI TCP Connection(3)-172.28.176.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-02-22 22:58:44 [RMI TCP Connection(3)-172.28.176.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-02-22 22:58:44 [RMI TCP Connection(3)-172.28.176.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2023-02-22 22:59:00 [http-nio-8200-exec-8] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 604 ms
+2023-02-22 22:59:07 [http-nio-8200-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 315 ms
+2023-02-22 22:59:17 [http-nio-8200-exec-10] INFO  c.m.s.d.s.impl.DepartmentServiceImpl - getting all departments ...... {}
+2023-02-22 23:04:08 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-02-22 23:04:08 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-02-22 23:04:08 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

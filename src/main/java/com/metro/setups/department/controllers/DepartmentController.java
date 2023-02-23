@@ -39,7 +39,7 @@ public class DepartmentController {
                             schema = @Schema(implementation = com.metro.core.ApiResponse.class))}),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
                     content = @Content)})
-    public ResponseEntity<?> getAllTitles() {
+    public ResponseEntity<?> getAllDepartments() {
         ApiResponse response = ApiResponse.builder()
                 .message("Failed to get all the titles")
                 .success(false)
@@ -99,7 +99,7 @@ public class DepartmentController {
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
                     content = @Content)})
-    public ResponseEntity<?> getTitleById(@PathVariable Long id) {
+    public ResponseEntity<?> getDepartmentById(@PathVariable Long id) {
         ApiResponse response = ApiResponse.builder()
                 .message("Failed to get the department by Id")
                 .success(false)
@@ -126,7 +126,7 @@ public class DepartmentController {
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
                     content = @Content)})
-    public ResponseEntity<?> fetchTitleByName(
+    public ResponseEntity<?> fetchDepartmentByName(
             @RequestParam String name
     ) {
         ApiResponse response = ApiResponse.builder()
@@ -157,7 +157,7 @@ public class DepartmentController {
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
                     content = @Content)})
-    public ResponseEntity<?> updateTitle(
+    public ResponseEntity<?> updateDepartment(
             @PathVariable(value = "id") Long id,
             @RequestBody @Valid DepartmentDTO departmentDto
     ) {

@@ -1,7 +1,6 @@
 package com.metro.setups.department.services.impl;
 
 import com.metro.core.ApiResponse;
-import com.metro.exceptions.ApiResponses;
 import com.metro.exceptions.DuplicateResourceException;
 import com.metro.exceptions.EmptySpaceExceptionHandler;
 import com.metro.exceptions.ResourceNotFoundException;
@@ -9,10 +8,14 @@ import com.metro.setups.department.dtos.DepartmentDTO;
 import com.metro.setups.department.entities.Department;
 import com.metro.setups.department.repositories.DepartmentRepository;
 import com.metro.setups.department.services.DepartmentService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
+@Slf4j
 public class DepartmentServiceImpl implements DepartmentService {
     private final DepartmentRepository departmentRepository;
 
@@ -22,15 +25,27 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public ApiResponse getAllDepartments() {
+        log.info("getting all departments ...... {}");
+        List<DepartmentDTO> departmentDTOS = new ArrayList<>();
         ApiResponse apiResponse = ApiResponse.builder()
                 .message("Failed to fetch all the departments")
                 .success(false)
                 .data(null)
                 .build();
-        List<Department> list = departmentRepository.findAll();
-        apiResponse.setMessage("Retrieved all the departments Successfully");
-        apiResponse.setSuccess(true);
-        apiResponse.setData(list);
+        List<Department> list = departmentRepository.findAll(Sort.by("name").ascending());
+        if (!list.isEmpty()) {
+            departmentDTOS.addAll(list.stream().map(e -> {
+                DepartmentDTO departmentDTO = DepartmentDTO.builder()
+                        .Id(e.getId())
+                        .name(e.getName())
+                        .manager_id(e.getManager_id())
+                        .build();
+                return departmentDTO;
+            }).toList());
+            apiResponse.setMessage("Retrieved all the departments Successfully");
+            apiResponse.setSuccess(true);
+            apiResponse.setData(list);
+        }
         return apiResponse;
     }
 

@@ -75,7 +75,7 @@ public class DesignationController {
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
                     content = @Content)})
-    public ResponseEntity<?> updateSection(
+    public ResponseEntity<?> updateDesignation(
             @PathVariable(value = "id") Long id,
             @RequestBody @Valid DesignationDTO designationDTO
     ) {
@@ -108,7 +108,7 @@ public class DesignationController {
                     content = @Content)})
 
     @GetMapping
-    public ResponseEntity<?> getAllSections() {
+    public ResponseEntity<?> getAllDesignations() {
         ApiResponse response = ApiResponse.builder()
                 .message("Failed to get all the designations")
                 .success(false)
@@ -131,7 +131,7 @@ public class DesignationController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
                     content = @Content)})
     @GetMapping("/search")
-    public ResponseEntity<?> getSectionByName(@RequestParam String section_name) {
+    public ResponseEntity<?> getDesignationByName(@RequestParam String section_name) {
         ApiResponse response = ApiResponse.builder()
                 .message("Failed to get section ")
                 .success(false)
@@ -156,7 +156,7 @@ public class DesignationController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
                     content = @Content)})
     @GetMapping("/{id}")
-    public ResponseEntity<?> getStaffCategoryById(@PathVariable Long id) {
+    public ResponseEntity<?> getDesignationById(@PathVariable Long id) {
         ApiResponse response = ApiResponse.builder()
                 .message("Failed to get designation")
                 .success(false)
