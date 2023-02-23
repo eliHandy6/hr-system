@@ -1,4 +1,4 @@
-package com.metro.setups.staff.category.dtos;
+package com.metro.setups.staff.jobgroup.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
@@ -20,14 +20,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @Builder
-public class StaffCategoryDto {
+public class JobGroupDto {
 
-    @NotNull(message = "Staff category name  is missing")
-    private String categoryName;
+    @NotNull(message = "Job group name  is missing")
+    private String jobGroupName;
 
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private Long categoryId;
+    private Long jobGroupId;
 
 
 }

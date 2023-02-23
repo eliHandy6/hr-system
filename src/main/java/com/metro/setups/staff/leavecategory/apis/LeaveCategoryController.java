@@ -1,10 +1,10 @@
-package com.metro.setups.staff.category.apis;
+package com.metro.setups.staff.leavecategory.apis;
 
 import com.metro.core.ApiResponse;
 import com.metro.exceptions.DuplicateResourceException;
 import com.metro.exceptions.ResourceNotFoundException;
-import com.metro.setups.staff.category.dtos.StaffCategoryDto;
-import com.metro.setups.staff.category.services.StaffCategoryService;
+import com.metro.setups.staff.leavecategory.dtos.LeaveCategoryDto;
+import com.metro.setups.staff.leavecategory.services.LeaveCategoryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -24,15 +24,16 @@ import org.springframework.web.bind.annotation.*;
  **/
 
 @RestController
-@RequestMapping("api/v1/staff-category")
-@Tag(name = "Staff Categories")
+@RequestMapping("api/v1/leave-category")
+@Tag(name = "Leave Category")
 @RequiredArgsConstructor
 @Slf4j
-public class StaffCategoryController {
+public class LeaveCategoryController {
 
-    private final StaffCategoryService staffCategoryService;
 
-    @Operation(summary = "create staff category")
+    private final LeaveCategoryService leaveCategoryService;
+
+    @Operation(summary = "create leave category")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = " Successfully created",
                     content = {@Content(mediaType = "application/json",
@@ -44,14 +45,14 @@ public class StaffCategoryController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
                     content = @Content)})
     @PostMapping
-    public ResponseEntity<?> createStaffCategory(@RequestBody @Valid StaffCategoryDto staffCategoryDto) {
+    public ResponseEntity<?> createLeaveCategory(@RequestBody @Valid LeaveCategoryDto leaveCategoryDto) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to save the staff  category")
+                .message("Failed to save the leave category")
                 .success(false)
-                .data(staffCategoryDto)
+                .data(leaveCategoryDto)
                 .build();
         try {
-            response = staffCategoryService.createStaffCategory(staffCategoryDto);
+            response = leaveCategoryService.createLeaveCategory(leaveCategoryDto);
             return new ResponseEntity<>(response, HttpStatus.CREATED);
         } catch (DuplicateResourceException duplicateResourceException) {
             response.setMessage(duplicateResourceException.getMessage());
@@ -64,28 +65,28 @@ public class StaffCategoryController {
     }
 
 
-    @Operation(summary = "update staff category")
+    @Operation(summary = "update leave category")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully updated ",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = ApiResponse.class))}),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Invalid body",
                     content = @Content),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "staff category not found ",
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "leave category not found ",
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "409", description = "Conflict ",
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
                     content = @Content)})
     @PutMapping({"/{id}"})
-    public ResponseEntity<?> updateStaffCategory(@PathVariable Long id, @RequestBody @Valid StaffCategoryDto staffCategoryDto) {
+    public ResponseEntity<?> updateLeaveCategory(@PathVariable Long id, @RequestBody @Valid LeaveCategoryDto leaveCategoryDto) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to update the staff category")
+                .message("Failed to update the leave category")
                 .success(false)
-                .data(staffCategoryDto)
+                .data(leaveCategoryDto)
                 .build();
         try {
-            response = staffCategoryService.updateStaffCategory(id, staffCategoryDto);
+            response = leaveCategoryService.updateLeaveCategory(id, leaveCategoryDto);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (ResourceNotFoundException resourceNotFoundException) {
             response.setMessage(resourceNotFoundException.getMessage());
@@ -100,7 +101,7 @@ public class StaffCategoryController {
 
     }
 
-    @Operation(summary = "get staff categories")
+    @Operation(summary = "get leave categories")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully fetched ",
                     content = {@Content(mediaType = "application/json",
@@ -109,13 +110,13 @@ public class StaffCategoryController {
                     content = @Content)})
 
     @GetMapping
-    public ResponseEntity<?> getAllStaffCategories() {
+    public ResponseEntity<?> getAllLeaveCategories() {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to fetch the staff categories")
+                .message("Failed to fetch the leave category")
                 .success(false)
                 .build();
         try {
-            response = staffCategoryService.getAllStaffCategory();
+            response = leaveCategoryService.getLeaveCategories();
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception exception) {
             response.setMessage(exception.getMessage());
@@ -124,23 +125,23 @@ public class StaffCategoryController {
 
     }
 
-    @Operation(summary = "fetch staff category based on id")
+    @Operation(summary = "fetch leave category on id")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully fetched ",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = ApiResponse.class))}),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "staff category not found ",
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "leave category  not found ",
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
                     content = @Content)})
     @GetMapping("/{id}")
-    public ResponseEntity<?> getStaffCategoryById(@PathVariable Long id) {
+    public ResponseEntity<?> getLeaveCategoryById(@PathVariable Long id) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to get staff category ")
+                .message("Failed to get leave category")
                 .success(false)
                 .build();
         try {
-            response = staffCategoryService.selectStaffCategoryByID(id);
+            response = leaveCategoryService.selectLeaveCategoryByID(id);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (ResourceNotFoundException resourceNotFoundException) {
             response.setMessage(resourceNotFoundException.getMessage());
@@ -152,7 +153,7 @@ public class StaffCategoryController {
     }
 
 
-    @Operation(summary = "fetch staff category based on name")
+    @Operation(summary = "fetch leave category based on name")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully fetched ",
                     content = {@Content(mediaType = "application/json",
@@ -160,13 +161,13 @@ public class StaffCategoryController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
                     content = @Content)})
     @GetMapping("/search")
-    public ResponseEntity<?> getStaffCategoryByName(@RequestParam String category_name) {
+    public ResponseEntity<?> getLeaveCategoryByName(@RequestParam String category_name) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to get staff category ")
+                .message("Failed to get leave category ")
                 .success(false)
                 .build();
         try {
-            response = staffCategoryService.selectStaffCategoryByName(category_name);
+            response = leaveCategoryService.selectLeaveCategoryByName(category_name);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception exception) {
             response.setMessage(exception.getMessage());
@@ -174,5 +175,6 @@ public class StaffCategoryController {
         }
 
     }
+
 
 }

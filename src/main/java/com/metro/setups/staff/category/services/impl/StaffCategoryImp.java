@@ -71,6 +71,11 @@ public class StaffCategoryImp implements StaffCategoryService {
         StaffCategory staffCategory = staffCategoryRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
                 "staff category not found with id  " + id));
 
+        if (existsStaffCategoryName(staffCategoryDto.getCategoryName())) {
+            throw new DuplicateResourceException(
+                    "staff category is existing"
+            );
+        }
         staffCategory.setCategoryName(staffCategoryDto.getCategoryName());
         staffCategory = staffCategoryRepository.save(staffCategory);
 
@@ -125,7 +130,7 @@ public class StaffCategoryImp implements StaffCategoryService {
                 .success(false)
                 .data(staffCategoryDtos)
                 .build();
-        List<StaffCategory> staffCategory = staffCategoryRepository.findByCategoryNameContainingIgnoreCase(name);
+        List<StaffCategory> staffCategory = staffCategoryRepository.findByCategoryNameContainingIgnoreCase(name.trim());
         if (!staffCategory.isEmpty()) {
             staffCategoryDtos.addAll(staffCategory.stream().map(e -> {
                 StaffCategoryDto staffCategoryDto = StaffCategoryDto.builder()
@@ -158,7 +163,6 @@ public class StaffCategoryImp implements StaffCategoryService {
                     .categoryId(staffCategory.getId())
                     .categoryName(staffCategory.getCategoryName())
                     .build();
-            staffCategoryDto.setCategoryId(Long.valueOf(staffCategory.getId().longValue()));
             response.setMessage("staff category fetched  successfully");
             response.setData(staffCategoryDto);
             response.setSuccess(true);

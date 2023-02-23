@@ -195,13 +195,13 @@ public class TitleController {
                 .success(false)
                 .data(null)
                 .build();
-        try{
+        try {
             response = titleService.deleteTitle(id);
             return new ResponseEntity<>(response, HttpStatus.OK);
-        }catch (ResourceNotFoundException resourceNotFoundException){
+        } catch (ResourceNotFoundException resourceNotFoundException) {
             response.setMessage(resourceNotFoundException.getMessage());
             return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
-        }catch (Exception exception){
+        } catch (Exception exception) {
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
