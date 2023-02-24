@@ -1,4 +1,4 @@
-package com.metro.setups.staff.businessUnit.specifications;
+package com.metro.setups.staff.noticeperiod.specifications;
 
 import com.metro.audit.Auditable;
 import jakarta.persistence.Column;
@@ -20,9 +20,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "business_unit")
-public class BusinessUnit extends Auditable {
+@Table(name = "notice_period")
+public class NoticePeriod extends Auditable {
 
-    @Column(name = "business_unit_name", nullable = false)
-    private String businessUnitName;
+    @Column(name = "notice_period_name", nullable = false)
+    private String noticePeriodName;
 }

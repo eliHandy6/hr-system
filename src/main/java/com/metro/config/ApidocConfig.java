@@ -80,7 +80,9 @@ public class ApidocConfig {
                 "/api/v1/department/**",
                 "/api/v1/section/**",
                 "/api/v1/designation/**",
-                "/api/v1/business-units/**"
+                "/api/v1/business-units/**",
+                "/api/v1/payroll-groups/**",
+                "/api/v1/notice-periods/**"
         };
         return GroupedOpenApi.builder()
                 .group("Hr-Setups")

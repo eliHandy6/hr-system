@@ -1,6 +1,6 @@
-package com.metro.setups.staff.businessUnit.repositories;
+package com.metro.setups.staff.businessunit.repositories;
 
-import com.metro.setups.staff.businessUnit.specifications.BusinessUnit;
+import com.metro.setups.staff.businessunit.specifications.BusinessUnit;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

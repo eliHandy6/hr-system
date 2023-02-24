@@ -1,4 +1,4 @@
-package com.metro.setups.staff.businessUnit.dtos;
+package com.metro.setups.staff.noticeperiod.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
@@ -20,14 +20,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @Builder
-public class BusinessUnitDto {
+public class NoticePeriodDto {
 
-    @NotNull(message = "Business Unit name  is missing")
-    private String businessUnitName;
+    @NotNull(message = "Notice period name  is missing")
+    private String noticePeriod;
 
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private Long businessUnitId;
+    private Long noticePeriodId;
 
 
 }
