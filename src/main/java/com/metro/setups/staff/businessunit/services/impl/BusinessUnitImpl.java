@@ -1,12 +1,11 @@
-package com.metro.setups.staff.businessUnit.services.impl;
+package com.metro.setups.staff.businessunit.services.impl;
 
 import com.metro.core.ApiResponse;
 import com.metro.exceptions.DuplicateResourceException;
 import com.metro.exceptions.ResourceNotFoundException;
-import com.metro.setups.staff.businessUnit.dtos.BusinessUnitDto;
-import com.metro.setups.staff.businessUnit.repositories.BusinessUnitRepository;
-import com.metro.setups.staff.businessUnit.services.BusinessUnitService;
-import com.metro.setups.staff.businessUnit.specifications.BusinessUnit;
+import com.metro.setups.staff.businessunit.dtos.BusinessUnitDto;
+import com.metro.setups.staff.businessunit.repositories.BusinessUnitRepository;
+import com.metro.setups.staff.businessunit.specifications.BusinessUnit;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -31,7 +30,8 @@ public class BusinessUnitImpl implements BusinessUnitService {
 
     @Override
     public ApiResponse createBusinessUnit(BusinessUnitDto businessUnitDto) {
-        log.info("Saving business unit {}", businessUnitDto.getBusinessUnitName());
+        log.info("Saving business unit {}", businessUnitDto.getBusinessUnitName()
+        );
         ApiResponse response = ApiResponse.builder()
                 .message("Failed to save the business unit")
                 .success(false)

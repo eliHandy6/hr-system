@@ -1,10 +1,11 @@
-package com.metro.setups.staff.businessUnit.apis;
+package com.metro.setups.staff.businessunit.apis;
 
 import com.metro.core.ApiResponse;
 import com.metro.exceptions.DuplicateResourceException;
 import com.metro.exceptions.ResourceNotFoundException;
-import com.metro.setups.staff.businessUnit.dtos.BusinessUnitDto;
-import com.metro.setups.staff.businessUnit.services.BusinessUnitService;
+import com.metro.setups.staff.businessunit.dtos.BusinessUnitDto;
+
+import com.metro.setups.staff.businessunit.services.impl.BusinessUnitService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
