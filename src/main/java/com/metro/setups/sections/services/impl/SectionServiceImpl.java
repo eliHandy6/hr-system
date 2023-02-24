@@ -6,15 +6,20 @@ import com.metro.exceptions.EmptySpaceExceptionHandler;
 import com.metro.exceptions.ResourceNotFoundException;
 import com.metro.setups.department.entities.Department;
 import com.metro.setups.department.repositories.DepartmentRepository;
+import com.metro.setups.designation.dtos.DesignationDTO;
+import com.metro.setups.designation.entities.Designation;
+import com.metro.setups.designation.repository.DesignationRepository;
 import com.metro.setups.sections.Entity.Section;
 import com.metro.setups.sections.dtos.SectionDTO;
 import com.metro.setups.sections.respositories.SectionRepository;
 import com.metro.setups.sections.services.SectionService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -24,13 +29,16 @@ import java.util.List;
  **/
 
 @Service
+@Slf4j
 public class SectionServiceImpl implements SectionService {
     private final SectionRepository sectionRepository;
     private final DepartmentRepository departmentRepository;
+    private final DesignationRepository designationRepository;
 
-    public SectionServiceImpl(SectionRepository sectionRepository, DepartmentRepository departmentRepository) {
+    public SectionServiceImpl(SectionRepository sectionRepository, DepartmentRepository departmentRepository, DesignationRepository designationRepository) {
         this.sectionRepository = sectionRepository;
         this.departmentRepository = departmentRepository;
+        this.designationRepository = designationRepository;
     }
 
     @Override
@@ -161,5 +169,32 @@ public class SectionServiceImpl implements SectionService {
     @Override
     public boolean sectionExists(String name) {
         return sectionRepository.existsSectionByNameIgnoreCase(name);
+    }
+
+    @Override
+    public ApiResponse getAllDesignationFromSection(Long id) {
+        log.info("getting all designations for a specific department ...... {}");
+        List<DesignationDTO> designationDTOS = new ArrayList<>();
+        ApiResponse apiResponse = ApiResponse.builder()
+                .message("Failed to fetch all then designations associated with the section id")
+                .success(false)
+                .data(designationDTOS)
+                .build();
+        List<Designation> list = designationRepository.findDesignationBySectionId(id);
+        list.sort(Comparator.comparing(Designation::getName));
+        if (!list.isEmpty()) {
+            designationDTOS.addAll(list.stream().map(e -> {
+                DesignationDTO designationDTO = DesignationDTO.builder()
+                        .designationId(e.getId())
+                        .name(e.getName())
+                        .section_id(e.getSection().getId())
+                        .build();
+                return designationDTO;
+            }).toList());
+            apiResponse.setData(designationDTOS);
+            apiResponse.setMessage("Completed Retrieving Designations in the section");
+            apiResponse.setSuccess(true);
+        }
+        return apiResponse;
     }
 }

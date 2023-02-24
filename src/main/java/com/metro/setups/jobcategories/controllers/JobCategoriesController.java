@@ -1,10 +1,11 @@
-package com.metro.setups.sections.controllers;
+package com.metro.setups.jobcategories.controllers;
 
 import com.metro.core.ApiResponse;
+import com.metro.exceptions.DuplicateResourceException;
 import com.metro.exceptions.EmptySpaceExceptionHandler;
 import com.metro.exceptions.ResourceNotFoundException;
-import com.metro.setups.sections.dtos.SectionDTO;
-import com.metro.setups.sections.services.SectionService;
+import com.metro.setups.jobcategories.dtos.JobCategoryDTO;
+import com.metro.setups.jobcategories.services.JobCategoryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -20,111 +21,103 @@ import org.springframework.web.bind.annotation.*;
  * Version :1.0.0
  * Email:marklentumunai@gmail.com
  **/
-
 @RestController
-@RequestMapping("/api/v1/section")
-@Tag(name = "section")
-public class SectionController {
-    private final SectionService sectionService;
+@RequestMapping("/api/v1/jobcategory")
+@Tag(name = "Job categories")
+public class JobCategoriesController {
+    private final JobCategoryService jobCategoryService;
 
-    public SectionController(SectionService sectionService) {
-        this.sectionService = sectionService;
+    public JobCategoriesController(JobCategoryService jobCategoryService) {
+        this.jobCategoryService = jobCategoryService;
     }
 
     @PostMapping
-    @Operation(description = "Create the section")
-    @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
+    @Operation(description = "Create a Job Category")
+    @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = " Successfully created",
                     content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = com.metro.core.ApiResponse.class))}),
+                            schema = @Schema(implementation = ApiResponse.class))}),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Invalid body",
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "409", description = "Conflict ",
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
                     content = @Content)})
-    public ResponseEntity<?> createSection(
+    public ResponseEntity<?> createJobCategory(
 
-            @RequestBody @Valid SectionDTO sectionDTO
+            @RequestBody @Valid JobCategoryDTO jobCategoryDTO
             ) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to create Section")
+                .message("Failed to create Job Category")
                 .success(false)
-                .data(sectionDTO)
+                .data(jobCategoryDTO)
                 .build();
         try {
-            response = sectionService.createSection(sectionDTO);
+            response = jobCategoryService.createJobCategory(jobCategoryDTO);
             return new ResponseEntity<>(response, HttpStatus.CREATED);
-        }
-        catch (ResourceNotFoundException resourceNotFoundException){
-            response.setMessage(resourceNotFoundException.getMessage());
+        } catch (EmptySpaceExceptionHandler apiExceptions) {
+            response.setMessage(apiExceptions.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        } catch (DuplicateResourceException duplicateResourceException){
+            response.setMessage(duplicateResourceException.getMessage());
             return new ResponseEntity<>(response, HttpStatus.CONFLICT);
         }catch (Exception exception) {
             response.setMessage(exception.getMessage());
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
     @PutMapping("/{id}")
-    @Operation(description = "update the Section")
-    @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
+    @Operation(description = "update the Job Categories")
+    @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully updated",
                     content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = com.metro.core.ApiResponse.class))}),
+                            schema = @Schema(implementation = ApiResponse.class))}),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Invalid body",
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Title not found ",
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
                     content = @Content)})
-    public ResponseEntity<?> updateSection(
+    public ResponseEntity<?> jobCategories(
             @PathVariable(value = "id") Long id,
-            @RequestBody @Valid SectionDTO sectionDTO
+            @RequestBody @Valid JobCategoryDTO jobCategoryDTO
     ) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to update Section")
+                .message("Failed to update Job Category")
                 .success(false)
-                .data(sectionDTO)
+                .data(jobCategoryDTO)
                 .build();
         try {
-            response = sectionService.updateSection(id, sectionDTO);
+            response = jobCategoryService.updateJobCategory(id, jobCategoryDTO);
             return new ResponseEntity<>(response, HttpStatus.OK);
-        } catch (ResourceNotFoundException resourceNotFoundException) {
-            response.setMessage(resourceNotFoundException.getMessage());
-            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
-        }catch(EmptySpaceExceptionHandler emptySpaceExceptionHandler){
-            response.setMessage(emptySpaceExceptionHandler.getMessage());
-            return  new ResponseEntity<>(response, HttpStatus.CONFLICT);
-        } catch (Exception exception) {
+        }catch (Exception exception) {
             response.setMessage(exception.getMessage());
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-    @Operation(summary = "get all the sections")
-    @ApiResponses(value = {
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully fetched ",
-                    content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = ApiResponse.class))}),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
-                    content = @Content)})
-
     @GetMapping
-    public ResponseEntity<?> getAllSections() {
+    @Operation(description = "Getting all the available Job categories")
+    @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully retrieved all the Job Categories",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = com.metro.core.ApiResponse.class))}),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
+                    content = @Content)})
+    public ResponseEntity<?> getAllDepartments() {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to fetch the staff sections")
+                .message("Failed to get all the Job Categories")
                 .success(false)
+                .data(null)
                 .build();
         try {
-            response = sectionService.getSections();
+            response = jobCategoryService.getJobCategory();
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception exception) {
             response.setMessage(exception.getMessage());
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
-    @Operation(summary = "fetch section based on name")
+    @Operation(summary = "fetch job category based on name")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully fetched ",
                     content = {@Content(mediaType = "application/json",
@@ -132,13 +125,13 @@ public class SectionController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
                     content = @Content)})
     @GetMapping("/search")
-    public ResponseEntity<?> getSectionByName(@RequestParam String section_name) {
+    public ResponseEntity<?> getJobCategoryByName(@RequestParam String name) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to get section ")
+                .message("Failed to get job category ")
                 .success(false)
                 .build();
         try {
-            response = sectionService.selectSectionByName(section_name);
+            response = jobCategoryService.selectJobCategoryByName(name);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception exception) {
             response.setMessage(exception.getMessage());
@@ -146,7 +139,8 @@ public class SectionController {
         }
 
     }
-    @Operation(summary = "fetch section based on id")
+
+    @Operation(summary = "get the job category based on id")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully fetched ",
                     content = {@Content(mediaType = "application/json",
@@ -156,13 +150,13 @@ public class SectionController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
                     content = @Content)})
     @GetMapping("/{id}")
-    public ResponseEntity<?> getSectionById(@PathVariable Long id) {
+    public ResponseEntity<?> getJobCategoryById(@PathVariable Long id) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to get section")
+                .message("Failed to get job category")
                 .success(false)
                 .build();
         try {
-            response = sectionService.selectSectionByID(id);
+            response = jobCategoryService.selectJobCategoryByID(id);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (ResourceNotFoundException resourceNotFoundException) {
             response.setMessage(resourceNotFoundException.getMessage());
@@ -173,7 +167,6 @@ public class SectionController {
         }
     }
 
-    @GetMapping("/{id}/designations")
     @Operation(description = "Get the designations by section Id")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully Retrieved the designations by the section ID",
@@ -181,14 +174,15 @@ public class SectionController {
                             schema = @Schema(implementation = com.metro.core.ApiResponse.class))}),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
                     content = @Content)})
-    public ResponseEntity<?> getSectionsDepartmentById(@PathVariable Long id) {
+    @GetMapping("/{id}/jobSubCategory")
+    public ResponseEntity<?> getJobSubCategoryJobCategoryById(@PathVariable Long id) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to get the designations in section")
+                .message("Failed to fetch the data")
                 .success(false)
                 .data(null)
                 .build();
         try {
-            response = sectionService.getAllDesignationFromSection(id);
+            response = jobCategoryService.getJobSubCategoryByJobId(id);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (ResourceNotFoundException resourceNotFoundException) {
             response.setMessage(resourceNotFoundException.getMessage());
@@ -197,5 +191,4 @@ public class SectionController {
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 }

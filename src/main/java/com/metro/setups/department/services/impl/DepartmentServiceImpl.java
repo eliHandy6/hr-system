@@ -8,19 +8,25 @@ import com.metro.setups.department.dtos.DepartmentDTO;
 import com.metro.setups.department.entities.Department;
 import com.metro.setups.department.repositories.DepartmentRepository;
 import com.metro.setups.department.services.DepartmentService;
+import com.metro.setups.sections.Entity.Section;
+import com.metro.setups.sections.dtos.SectionDTO;
+import com.metro.setups.sections.respositories.SectionRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 @Service
 @Slf4j
 public class DepartmentServiceImpl implements DepartmentService {
     private final DepartmentRepository departmentRepository;
+    private  final SectionRepository sectionRepository;
 
-    public DepartmentServiceImpl(DepartmentRepository departmentRepository) {
+    public DepartmentServiceImpl(DepartmentRepository departmentRepository, SectionRepository sectionRepository) {
         this.departmentRepository = departmentRepository;
+        this.sectionRepository = sectionRepository;
     }
 
     @Override
@@ -30,7 +36,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         ApiResponse apiResponse = ApiResponse.builder()
                 .message("Failed to fetch all the departments")
                 .success(false)
-                .data(null)
+                .data(departmentDTOS)
                 .build();
         List<Department> list = departmentRepository.findAll(Sort.by("name").ascending());
         if (!list.isEmpty()) {
@@ -44,7 +50,7 @@ public class DepartmentServiceImpl implements DepartmentService {
             }).toList());
             apiResponse.setMessage("Retrieved all the departments Successfully");
             apiResponse.setSuccess(true);
-            apiResponse.setData(list);
+            apiResponse.setData(departmentDTOS);
         }
         return apiResponse;
     }
@@ -128,5 +134,33 @@ public class DepartmentServiceImpl implements DepartmentService {
         apiResponse.setMessage("Created Department Successfully");
         apiResponse.setSuccess(true);
         return apiResponse;
+    }
+
+    @Override
+    public ApiResponse getAllDepartmentSections(Long id) {
+        log.info("getting all sections for a specific ...... {}");
+        List<SectionDTO> sectionDTOS = new ArrayList<>();
+        ApiResponse apiResponse = ApiResponse.builder()
+                .message("Failed to fetch all then sections associated with the department id")
+                .success(false)
+                .data(sectionDTOS)
+                .build();
+        List<Section> list = sectionRepository.getSectionsByDepartment_Id(id);
+        list.sort(Comparator.comparing(Section::getName));
+        if (!list.isEmpty()) {
+            sectionDTOS.addAll(list.stream().map(e -> {
+                SectionDTO sectionDTO = SectionDTO.builder()
+                        .sectionId(e.getId())
+                        .name(e.getName())
+                        .department_id(e.getDepartment().getId())
+                        .build();
+                return sectionDTO;
+            }).toList());
+            apiResponse.setData(sectionDTOS);
+            apiResponse.setMessage("Completed Retrieving sections in the department");
+            apiResponse.setSuccess(true);
+        }
+        return apiResponse;
+
     }
 }

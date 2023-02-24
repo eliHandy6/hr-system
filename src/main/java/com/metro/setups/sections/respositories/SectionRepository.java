@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface SectionRepository extends JpaRepository<Section, Long> {
     List<Section> findSectionByNameIgnoreCase(String name);
+    List<Section> getSectionsByDepartment_Id(Long id);
     boolean existsSectionByNameIgnoreCase(String name);
 }

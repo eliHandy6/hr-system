@@ -20,4 +20,5 @@ public interface SectionService {
 
     ApiResponse selectSectionByID(Long id);
     boolean sectionExists(String name);
+    ApiResponse getAllDesignationFromSection(Long id);
 }
