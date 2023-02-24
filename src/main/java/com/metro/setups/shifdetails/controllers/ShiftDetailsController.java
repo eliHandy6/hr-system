@@ -1,10 +1,10 @@
-package com.metro.setups.districts.controllers;
+package com.metro.setups.shifdetails.controllers;
 
 import com.metro.core.ApiResponse;
 import com.metro.exceptions.DuplicateResourceException;
 import com.metro.exceptions.ResourceNotFoundException;
-import com.metro.setups.districts.dtos.DistrictDTO;
-import com.metro.setups.districts.services.DistrictService;
+import com.metro.setups.shifdetails.dtos.ShiftDetailsDTO;
+import com.metro.setups.shifdetails.services.ShiftDetailsService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -21,16 +21,16 @@ import org.springframework.web.bind.annotation.*;
  * Email:marklentumunai@gmail.com
  **/
 @RestController
-@RequestMapping("/api/v1/district")
-@Tag(name = "Districts")
-public class DistrictController {
-    private final DistrictService districtService;
+@RequestMapping("/api/v1/shift_details")
+@Tag(name = "Shift Details")
+public class ShiftDetailsController {
+    private final ShiftDetailsService shiftDetailsService;
 
-    public DistrictController(DistrictService districtService) {
-        this.districtService = districtService;
+    public ShiftDetailsController(ShiftDetailsService shiftDetailsService) {
+        this.shiftDetailsService = shiftDetailsService;
     }
 
-    @Operation(summary = "create District")
+    @Operation(summary = "Create Shift Details")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = " Successfully created",
                     content = {@Content(mediaType = "application/json",
@@ -42,14 +42,14 @@ public class DistrictController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
                     content = @Content)})
     @PostMapping
-    public ResponseEntity<?> createDistrict(@RequestBody @Valid DistrictDTO districtDTO) {
+    public ResponseEntity<?> createShiftDetails(@RequestBody @Valid ShiftDetailsDTO shiftDetailsDTO) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to create District")
+                .message("Failed to create the Shift Details")
                 .success(false)
-                .data(districtDTO)
+                .data(shiftDetailsDTO)
                 .build();
         try {
-            response = districtService.createDistrict(districtDTO);
+            response = shiftDetailsService.createShiftDetails(shiftDetailsDTO);
             return new ResponseEntity<>(response, HttpStatus.CREATED);
         } catch (DuplicateResourceException duplicateResourceException) {
             response.setMessage(duplicateResourceException.getMessage());
@@ -60,26 +60,27 @@ public class DistrictController {
         }
 
     }
-    @Operation(summary = "update District")
+
+    @Operation(summary = "update Shift Details")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully updated ",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = ApiResponse.class))}),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Invalid body",
                     content = @Content),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "District not found ",
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Resource not found ",
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
                     content = @Content)})
     @PutMapping({"/{id}"})
-    public ResponseEntity<?> updateDistrict(@PathVariable Long id, @RequestBody @Valid DistrictDTO districtDTO) {
+    public ResponseEntity<?> updateShiftDetails(@PathVariable Long id, @RequestBody @Valid ShiftDetailsDTO shiftDetailsDTO) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to update district")
+                .message("Failed to update shift Details")
                 .success(false)
-                .data(districtDTO)
+                .data(shiftDetailsDTO)
                 .build();
         try {
-            response = districtService.updateDistrict(id, districtDTO);
+            response = shiftDetailsService.updateShiftDetails(id, shiftDetailsDTO);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (ResourceNotFoundException resourceNotFoundException) {
             response.setMessage(resourceNotFoundException.getMessage());
@@ -90,7 +91,7 @@ public class DistrictController {
         }
 
     }
-    @Operation(summary = "get All districts")
+    @Operation(summary = "get All the Shift Details")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully fetched ",
                     content = {@Content(mediaType = "application/json",
@@ -99,13 +100,13 @@ public class DistrictController {
                     content = @Content)})
 
     @GetMapping
-    public ResponseEntity<?> getAllDistricts() {
+    public ResponseEntity<?> getAllShiftDetails() {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to get districts")
+                .message("Failed to get Shift Details")
                 .success(false)
                 .build();
         try {
-            response = districtService.getDistricts();
+            response = shiftDetailsService.getShiftDetails();
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception exception) {
             response.setMessage(exception.getMessage());
@@ -113,23 +114,23 @@ public class DistrictController {
         }
 
     }
-    @Operation(summary = "fetch district based on id")
+    @Operation(summary = "fetch Shift Details based on id")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully fetched ",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = ApiResponse.class))}),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "district not found ",
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Resource not found ",
                     content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
                     content = @Content)})
     @GetMapping("/{id}")
-    public ResponseEntity<?> getDistrictById(@PathVariable Long id) {
+    public ResponseEntity<?> getShiftDetailsById(@PathVariable Long id) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to get district ")
+                .message("Failed to get shift Details ")
                 .success(false)
                 .build();
         try {
-            response = districtService.selectDistrictByID(id);
+            response = shiftDetailsService.selectShiftDetailsByID(id);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (ResourceNotFoundException resourceNotFoundException) {
             response.setMessage(resourceNotFoundException.getMessage());
@@ -139,7 +140,7 @@ public class DistrictController {
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @Operation(summary = "fetch districts based on name")
+    @Operation(summary = "fetch Shift Details based on name")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully fetched ",
                     content = {@Content(mediaType = "application/json",
@@ -147,13 +148,13 @@ public class DistrictController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
                     content = @Content)})
     @GetMapping("/search")
-    public ResponseEntity<?> getDistrictsByName(@RequestParam String district_name) {
+    public ResponseEntity<?> getShiftDetailsByName(@RequestParam String name) {
         ApiResponse response = ApiResponse.builder()
-                .message("Failed to get district ")
+                .message("Failed to get Shift Details ")
                 .success(false)
                 .build();
         try {
-            response = districtService.selectDistrictByName(district_name);
+            response = shiftDetailsService.selectShiftDetailsByName(name);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception exception) {
             response.setMessage(exception.getMessage());
@@ -161,4 +162,5 @@ public class DistrictController {
         }
 
     }
+
 }
