@@ -147,7 +147,7 @@ public class DistrictController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Something wrong happened",
                     content = @Content)})
     @GetMapping("/search")
-    public ResponseEntity<?> getStaffCategoryByName(@RequestParam String district_name) {
+    public ResponseEntity<?> getDistrictsByName(@RequestParam String district_name) {
         ApiResponse response = ApiResponse.builder()
                 .message("Failed to get district ")
                 .success(false)

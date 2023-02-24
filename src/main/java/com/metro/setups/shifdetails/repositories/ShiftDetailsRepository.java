@@ -7,7 +7,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ShiftDetailRepository extends JpaRepository<ShiftDetails, Long> {
+public interface ShiftDetailsRepository extends JpaRepository<ShiftDetails, Long> {
     List<ShiftDetails> findShiftDetailsByNameIgnoreCase(String name);
+
+    boolean existsByNameIgnoreCase(String name);
 
 }
