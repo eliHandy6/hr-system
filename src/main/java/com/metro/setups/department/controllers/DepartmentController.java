@@ -169,11 +169,33 @@ public class DepartmentController {
         try {
             response = departmentService.updateDepartment(id, departmentDto);
             return new ResponseEntity<>(response, HttpStatus.OK);
+        }catch (Exception exception) {
+            response.setMessage(exception.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/{id}/sections")
+    @Operation(description = "Get the sections department by Id")
+    @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = " Successfully Retrieved the section by the department ID",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = com.metro.core.ApiResponse.class))}),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Internal Server error",
+                    content = @Content)})
+    public ResponseEntity<?> getSectionsDepartmentById(@PathVariable Long id) {
+        ApiResponse response = ApiResponse.builder()
+                .message("Failed to get the department by Id")
+                .success(false)
+                .data(null)
+                .build();
+        try {
+            response = departmentService.getAllDepartmentSections(id);
+            return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (ResourceNotFoundException resourceNotFoundException) {
             response.setMessage(resourceNotFoundException.getMessage());
             return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         } catch (Exception exception) {
-            response.setMessage(exception.getMessage());
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

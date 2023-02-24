@@ -10,5 +10,6 @@ public interface DepartmentService {
     ApiResponse getDepartmentByName(String name);
     ApiResponse updateDepartment(Long id, DepartmentDTO departmentDTO);
     ApiResponse createDepartment(DepartmentDTO departmentDTO);
+    ApiResponse getAllDepartmentSections(Long id);
 
 }

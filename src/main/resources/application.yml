@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/metro_hr_db
     username: postgres
-    password: WAKAYA
+    password: postgres
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
