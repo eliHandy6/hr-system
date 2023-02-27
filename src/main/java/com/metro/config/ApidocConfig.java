@@ -92,6 +92,17 @@ public class ApidocConfig {
                 .pathsToMatch(paths)
                 .build();
     }
+    @Bean
+    public GroupedOpenApi bioSetups() {
+        String[] paths = {"/api/v1/staff_children/**",
+                "/api/v1/next_of_kin_details/**",
+                "/api/v1/spouse_details/**"
+        };
+        return GroupedOpenApi.builder()
+                .group("Bio-Data")
+                .pathsToMatch(paths)
+                .build();
+    }
 
 
 }

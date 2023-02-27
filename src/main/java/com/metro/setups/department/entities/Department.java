@@ -20,7 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Department extends Auditable {
     @NotNull(message = "Title name is missing")
-    @Column(name = "TITLE_NAME")
+    @Column(name = "TITLE_NAME", nullable = false)
     private String name;
     @Column(name = "MANAGER_ID")
     private Long manager_id;
