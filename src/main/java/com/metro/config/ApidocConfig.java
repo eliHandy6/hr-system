@@ -86,6 +86,7 @@ public class ApidocConfig {
                 "/api/v1/payroll-groups/**",
                 "/api/v1/notice-periods/**",
                 "/api/v1/shift_details/**"
+
         };
         return GroupedOpenApi.builder()
                 .group("Hr-Setups")
@@ -93,13 +94,21 @@ public class ApidocConfig {
                 .build();
     }
     @Bean
-    public GroupedOpenApi bioSetups() {
-        String[] paths = {"/api/v1/staff_children/**",
-                "/api/v1/next_of_kin_details/**",
-                "/api/v1/spouse_details/**"
+    public GroupedOpenApi staffRegistration() {
+        String[] paths = {"/staff/{staff_id}/children_details/**",
+                "/staff/{staff_id}/curricular/**",
+                "/staff/{staff_id}/leadership/**",
+                "/staff/{staff_id}/licenses_and_certificates/**",
+                "/staff/{staff_id}/emergency_details/**",
+                "/staff/{staff_id}/nationalId_details/**",
+                "/staff/{staff_id}/address_details/**",
+                "/staff/{staff_id}/kin_details/**",
+                "/staff/{staff_id}/spouse_details/**",
+                "/api/v1/employee/**"
+
         };
         return GroupedOpenApi.builder()
-                .group("Bio-Data")
+                .group("Staff-Registration")
                 .pathsToMatch(paths)
                 .build();
     }

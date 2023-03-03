@@ -26,7 +26,7 @@ public class AuthenticationController {
     private final AuthenticationService authenticationService;
 
 
-    @PostMapping("/registerUser")
+    @PostMapping
 
     @PreAuthorize("hasAnyRole('ADMIN', 'HR')")
     @Operation(

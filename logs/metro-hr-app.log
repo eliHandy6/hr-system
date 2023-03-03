@@ -1,519 +1,122 @@
-2023-02-27 08:19:52 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1d10h53m24s283ms133µs400ns).
-2023-02-27 08:56:17 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m26s684ms394µs800ns).
-2023-02-27 09:42:52 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-02-27 09:42:52 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2023-02-27 09:42:52 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2023-02-27 12:31:07 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
-2023-02-27 12:31:07 [main] INFO  com.metro.HrApplication - Starting HrApplication using Java 18 with PID 17004 (C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes started by mwairimu in C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main)
-2023-02-27 12:31:07 [main] INFO  com.metro.HrApplication - No active profile set, falling back to 1 default profile: "default"
-2023-02-27 12:31:09 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-02-27 12:31:09 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 259 ms. Found 23 JPA repository interfaces.
-2023-02-27 12:31:10 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8200 (http)
-2023-02-27 12:31:10 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8200"]
-2023-02-27 12:31:10 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2023-02-27 12:31:10 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.4]
-2023-02-27 12:31:10 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2023-02-27 12:31:10 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3235 ms
-2023-02-27 12:31:10 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-02-27 12:31:11 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.6.Final
-2023-02-27 12:31:11 [main] WARN  org.hibernate.orm.deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
-2023-02-27 12:31:11 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2023-02-27 12:31:11 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@27fc0217
-2023-02-27 12:31:11 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2023-02-27 12:31:11 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2023-02-27 12:31:14 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-02-27 12:31:14 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-02-27 12:31:15 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'childrenApi' defined in file [C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes\com\metro\setups\biodatasetups\children\api\ChildrenApi.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'childrenServiceImpl' defined in file [C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes\com\metro\setups\biodatasetups\children\services\Impl\ChildrenServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'childrenRepository' defined in com.metro.setups.biodatasetups.children.repository.ChildrenRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract boolean com.metro.setups.biodatasetups.children.repository.ChildrenRepository.existsByFirstNameIgnoreCaseOrSecondNameIgnoreCaseOrLastNameIgnoreCase(java.lang.String); Reason: Failed to create query for method public abstract boolean com.metro.setups.biodatasetups.children.repository.ChildrenRepository.existsByFirstNameIgnoreCaseOrSecondNameIgnoreCaseOrLastNameIgnoreCase(java.lang.String); Method public abstract boolean com.metro.setups.biodatasetups.children.repository.ChildrenRepository.existsByFirstNameIgnoreCaseOrSecondNameIgnoreCaseOrLastNameIgnoreCase(java.lang.String) expects at least 2 arguments but only found 1; This leaves an operator of type SIMPLE_PROPERTY for property secondName unbound
-2023-02-27 12:31:15 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-02-27 12:31:15 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2023-02-27 12:31:15 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2023-02-27 12:31:15 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
-2023-02-27 12:31:15 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2023-02-27 12:31:15 [main] ERROR o.s.boot.SpringApplication - Application run failed
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'childrenApi' defined in file [C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes\com\metro\setups\biodatasetups\children\api\ChildrenApi.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'childrenServiceImpl' defined in file [C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes\com\metro\setups\biodatasetups\children\services\Impl\ChildrenServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'childrenRepository' defined in com.metro.setups.biodatasetups.children.repository.ChildrenRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract boolean com.metro.setups.biodatasetups.children.repository.ChildrenRepository.existsByFirstNameIgnoreCaseOrSecondNameIgnoreCaseOrLastNameIgnoreCase(java.lang.String); Reason: Failed to create query for method public abstract boolean com.metro.setups.biodatasetups.children.repository.ChildrenRepository.existsByFirstNameIgnoreCaseOrSecondNameIgnoreCaseOrLastNameIgnoreCase(java.lang.String); Method public abstract boolean com.metro.setups.biodatasetups.children.repository.ChildrenRepository.existsByFirstNameIgnoreCaseOrSecondNameIgnoreCaseOrLastNameIgnoreCase(java.lang.String) expects at least 2 arguments but only found 1; This leaves an operator of type SIMPLE_PROPERTY for property secondName unbound
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798)
-	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:245)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1344)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:961)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:915)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584)
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291)
-	at com.metro.HrApplication.main(HrApplication.java:12)
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'childrenServiceImpl' defined in file [C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes\com\metro\setups\biodatasetups\children\services\Impl\ChildrenServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'childrenRepository' defined in com.metro.setups.biodatasetups.children.repository.ChildrenRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract boolean com.metro.setups.biodatasetups.children.repository.ChildrenRepository.existsByFirstNameIgnoreCaseOrSecondNameIgnoreCaseOrLastNameIgnoreCase(java.lang.String); Reason: Failed to create query for method public abstract boolean com.metro.setups.biodatasetups.children.repository.ChildrenRepository.existsByFirstNameIgnoreCaseOrSecondNameIgnoreCaseOrLastNameIgnoreCase(java.lang.String); Method public abstract boolean com.metro.setups.biodatasetups.children.repository.ChildrenRepository.existsByFirstNameIgnoreCaseOrSecondNameIgnoreCaseOrLastNameIgnoreCase(java.lang.String) expects at least 2 arguments but only found 1; This leaves an operator of type SIMPLE_PROPERTY for property secondName unbound
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798)
-	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:245)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1344)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325)
-	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:885)
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:789)
-	... 19 common frames omitted
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'childrenRepository' defined in com.metro.setups.biodatasetups.children.repository.ChildrenRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract boolean com.metro.setups.biodatasetups.children.repository.ChildrenRepository.existsByFirstNameIgnoreCaseOrSecondNameIgnoreCaseOrLastNameIgnoreCase(java.lang.String); Reason: Failed to create query for method public abstract boolean com.metro.setups.biodatasetups.children.repository.ChildrenRepository.existsByFirstNameIgnoreCaseOrSecondNameIgnoreCaseOrLastNameIgnoreCase(java.lang.String); Method public abstract boolean com.metro.setups.biodatasetups.children.repository.ChildrenRepository.existsByFirstNameIgnoreCaseOrSecondNameIgnoreCaseOrLastNameIgnoreCase(java.lang.String) expects at least 2 arguments but only found 1; This leaves an operator of type SIMPLE_PROPERTY for property secondName unbound
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1751)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325)
-	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:885)
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:789)
-	... 33 common frames omitted
-Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract boolean com.metro.setups.biodatasetups.children.repository.ChildrenRepository.existsByFirstNameIgnoreCaseOrSecondNameIgnoreCaseOrLastNameIgnoreCase(java.lang.String); Reason: Failed to create query for method public abstract boolean com.metro.setups.biodatasetups.children.repository.ChildrenRepository.existsByFirstNameIgnoreCaseOrSecondNameIgnoreCaseOrLastNameIgnoreCase(java.lang.String); Method public abstract boolean com.metro.setups.biodatasetups.children.repository.ChildrenRepository.existsByFirstNameIgnoreCaseOrSecondNameIgnoreCaseOrLastNameIgnoreCase(java.lang.String) expects at least 2 arguments but only found 1; This leaves an operator of type SIMPLE_PROPERTY for property secondName unbound
-	at org.springframework.data.repository.query.QueryCreationException.create(QueryCreationException.java:101)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:115)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.mapMethodsToQuery(QueryExecutorMethodInterceptor.java:99)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lambda$new$0(QueryExecutorMethodInterceptor.java:88)
-	at java.base/java.util.Optional.map(Optional.java:260)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.<init>(QueryExecutorMethodInterceptor.java:88)
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport.getRepository(RepositoryFactorySupport.java:357)
-	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.lambda$afterPropertiesSet$5(RepositoryFactoryBeanSupport.java:279)
-	at org.springframework.data.util.Lazy.getNullable(Lazy.java:229)
-	at org.springframework.data.util.Lazy.get(Lazy.java:113)
-	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.afterPropertiesSet(RepositoryFactoryBeanSupport.java:285)
-	at org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean.afterPropertiesSet(JpaRepositoryFactoryBean.java:132)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1797)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1747)
-	... 44 common frames omitted
-Caused by: java.lang.IllegalArgumentException: Failed to create query for method public abstract boolean com.metro.setups.biodatasetups.children.repository.ChildrenRepository.existsByFirstNameIgnoreCaseOrSecondNameIgnoreCaseOrLastNameIgnoreCase(java.lang.String); Method public abstract boolean com.metro.setups.biodatasetups.children.repository.ChildrenRepository.existsByFirstNameIgnoreCaseOrSecondNameIgnoreCaseOrLastNameIgnoreCase(java.lang.String) expects at least 2 arguments but only found 1; This leaves an operator of type SIMPLE_PROPERTY for property secondName unbound
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:96)
-	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:124)
-	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateIfNotFoundQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:258)
-	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:95)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:111)
-	... 56 common frames omitted
-Caused by: java.lang.IllegalStateException: Method public abstract boolean com.metro.setups.biodatasetups.children.repository.ChildrenRepository.existsByFirstNameIgnoreCaseOrSecondNameIgnoreCaseOrLastNameIgnoreCase(java.lang.String) expects at least 2 arguments but only found 1; This leaves an operator of type SIMPLE_PROPERTY for property secondName unbound
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.throwExceptionOnArgumentMismatch(PartTreeJpaQuery.java:149)
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.validate(PartTreeJpaQuery.java:135)
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:90)
-	... 60 common frames omitted
-2023-02-27 12:36:24 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
-2023-02-27 12:36:25 [main] INFO  com.metro.HrApplication - Starting HrApplication using Java 18 with PID 16104 (C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes started by mwairimu in C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main)
-2023-02-27 12:36:25 [main] INFO  com.metro.HrApplication - No active profile set, falling back to 1 default profile: "default"
-2023-02-27 12:36:26 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-02-27 12:36:26 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 175 ms. Found 23 JPA repository interfaces.
-2023-02-27 12:36:27 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8200 (http)
-2023-02-27 12:36:27 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8200"]
-2023-02-27 12:36:27 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2023-02-27 12:36:27 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.4]
-2023-02-27 12:36:27 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2023-02-27 12:36:27 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2679 ms
-2023-02-27 12:36:28 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-02-27 12:36:28 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.6.Final
-2023-02-27 12:36:28 [main] WARN  org.hibernate.orm.deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
-2023-02-27 12:36:28 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2023-02-27 12:36:28 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7482309c
-2023-02-27 12:36:28 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2023-02-27 12:36:28 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2023-02-27 12:36:31 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-02-27 12:36:31 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-02-27 12:36:32 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-02-27 12:36:34 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 13 endpoint(s) beneath base path '/actuator'
-2023-02-27 12:36:34 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@35825d43, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5f84e764, org.springframework.security.web.context.SecurityContextHolderFilter@527b989a, org.springframework.security.web.header.HeaderWriterFilter@ceeb762, org.springframework.security.web.authentication.logout.LogoutFilter@4a0e3bd, com.metro.config.security.JwtAuthenticationFilter@54b313d6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@ca9ffc0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@e316971, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5eaab295, org.springframework.security.web.session.SessionManagementFilter@6942ff10, org.springframework.security.web.access.ExceptionTranslationFilter@7f129873, org.springframework.security.web.access.intercept.AuthorizationFilter@3d2af8d7]
-2023-02-27 12:36:34 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8200"]
-2023-02-27 12:36:34 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8200 (http) with context path ''
-2023-02-27 12:36:34 [main] INFO  com.metro.HrApplication - Started HrApplication in 10.644 seconds (process running for 11.734)
-2023-02-27 12:36:35 [RMI TCP Connection(3)-172.28.176.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-02-27 12:36:35 [RMI TCP Connection(3)-172.28.176.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2023-02-27 12:36:35 [RMI TCP Connection(3)-172.28.176.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
-2023-02-27 12:36:43 [http-nio-8200-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 753 ms
-2023-02-27 12:36:50 [http-nio-8200-exec-4] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 147 ms
-2023-02-27 12:56:21 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-02-27 12:56:21 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2023-02-27 12:56:21 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2023-02-27 14:34:41 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
-2023-02-27 14:34:41 [main] INFO  com.metro.HrApplication - Starting HrApplication using Java 18 with PID 12836 (C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes started by mwairimu in C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main)
-2023-02-27 14:34:41 [main] INFO  com.metro.HrApplication - No active profile set, falling back to 1 default profile: "default"
-2023-02-27 14:34:43 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-02-27 14:34:43 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 227 ms. Found 24 JPA repository interfaces.
-2023-02-27 14:34:44 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8200 (http)
-2023-02-27 14:34:44 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8200"]
-2023-02-27 14:34:44 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2023-02-27 14:34:44 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.4]
-2023-02-27 14:34:45 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2023-02-27 14:34:45 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3636 ms
-2023-02-27 14:34:45 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-02-27 14:34:45 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.6.Final
-2023-02-27 14:34:45 [main] WARN  org.hibernate.orm.deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
-2023-02-27 14:34:46 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2023-02-27 14:34:46 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7672960e
-2023-02-27 14:34:46 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2023-02-27 14:34:46 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2023-02-27 14:34:49 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-02-27 14:34:49 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-02-27 14:34:50 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'nextOfKinDetailsAPI' defined in file [C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes\com\metro\setups\biodatasetups\kin\api\NextOfKinDetailsAPI.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'nextOfKinServiceImpl' defined in file [C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes\com\metro\setups\biodatasetups\kin\services\impl\NextOfKinServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'nextOfKinDetailsRepository' defined in com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract boolean com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository.existsByNextOfKinDetailsByNameIgnoreCase(java.lang.String); Reason: Failed to create query for method public abstract boolean com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository.existsByNextOfKinDetailsByNameIgnoreCase(java.lang.String); No property 'nextOfKinDetailsByName' found for type 'NextOfKinDetails'
-2023-02-27 14:34:50 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-02-27 14:34:50 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2023-02-27 14:34:50 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2023-02-27 14:34:50 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
-2023-02-27 14:34:50 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2023-02-27 14:34:50 [main] ERROR o.s.boot.SpringApplication - Application run failed
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'nextOfKinDetailsAPI' defined in file [C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes\com\metro\setups\biodatasetups\kin\api\NextOfKinDetailsAPI.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'nextOfKinServiceImpl' defined in file [C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes\com\metro\setups\biodatasetups\kin\services\impl\NextOfKinServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'nextOfKinDetailsRepository' defined in com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract boolean com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository.existsByNextOfKinDetailsByNameIgnoreCase(java.lang.String); Reason: Failed to create query for method public abstract boolean com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository.existsByNextOfKinDetailsByNameIgnoreCase(java.lang.String); No property 'nextOfKinDetailsByName' found for type 'NextOfKinDetails'
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798)
-	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:245)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1344)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:961)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:915)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584)
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291)
-	at com.metro.HrApplication.main(HrApplication.java:12)
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'nextOfKinServiceImpl' defined in file [C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes\com\metro\setups\biodatasetups\kin\services\impl\NextOfKinServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'nextOfKinDetailsRepository' defined in com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract boolean com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository.existsByNextOfKinDetailsByNameIgnoreCase(java.lang.String); Reason: Failed to create query for method public abstract boolean com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository.existsByNextOfKinDetailsByNameIgnoreCase(java.lang.String); No property 'nextOfKinDetailsByName' found for type 'NextOfKinDetails'
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798)
-	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:245)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1344)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325)
-	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:885)
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:789)
-	... 19 common frames omitted
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'nextOfKinDetailsRepository' defined in com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract boolean com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository.existsByNextOfKinDetailsByNameIgnoreCase(java.lang.String); Reason: Failed to create query for method public abstract boolean com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository.existsByNextOfKinDetailsByNameIgnoreCase(java.lang.String); No property 'nextOfKinDetailsByName' found for type 'NextOfKinDetails'
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1751)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325)
-	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:885)
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:789)
-	... 33 common frames omitted
-Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract boolean com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository.existsByNextOfKinDetailsByNameIgnoreCase(java.lang.String); Reason: Failed to create query for method public abstract boolean com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository.existsByNextOfKinDetailsByNameIgnoreCase(java.lang.String); No property 'nextOfKinDetailsByName' found for type 'NextOfKinDetails'
-	at org.springframework.data.repository.query.QueryCreationException.create(QueryCreationException.java:101)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:115)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.mapMethodsToQuery(QueryExecutorMethodInterceptor.java:99)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lambda$new$0(QueryExecutorMethodInterceptor.java:88)
-	at java.base/java.util.Optional.map(Optional.java:260)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.<init>(QueryExecutorMethodInterceptor.java:88)
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport.getRepository(RepositoryFactorySupport.java:357)
-	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.lambda$afterPropertiesSet$5(RepositoryFactoryBeanSupport.java:279)
-	at org.springframework.data.util.Lazy.getNullable(Lazy.java:229)
-	at org.springframework.data.util.Lazy.get(Lazy.java:113)
-	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.afterPropertiesSet(RepositoryFactoryBeanSupport.java:285)
-	at org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean.afterPropertiesSet(JpaRepositoryFactoryBean.java:132)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1797)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1747)
-	... 44 common frames omitted
-Caused by: java.lang.IllegalArgumentException: Failed to create query for method public abstract boolean com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository.existsByNextOfKinDetailsByNameIgnoreCase(java.lang.String); No property 'nextOfKinDetailsByName' found for type 'NextOfKinDetails'
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:96)
-	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:124)
-	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateIfNotFoundQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:258)
-	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:95)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:111)
-	... 56 common frames omitted
-Caused by: org.springframework.data.mapping.PropertyReferenceException: No property 'nextOfKinDetailsByName' found for type 'NextOfKinDetails'
-	at org.springframework.data.mapping.PropertyPath.<init>(PropertyPath.java:90)
-	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:423)
-	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:399)
-	at org.springframework.data.mapping.PropertyPath.lambda$from$0(PropertyPath.java:352)
-	at java.base/java.util.concurrent.ConcurrentMap.computeIfAbsent(ConcurrentMap.java:330)
-	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:334)
-	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:317)
-	at org.springframework.data.repository.query.parser.Part.<init>(Part.java:81)
-	at org.springframework.data.repository.query.parser.PartTree$OrPart.lambda$new$0(PartTree.java:242)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
-	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
-	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
-	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
-	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
-	at org.springframework.data.repository.query.parser.PartTree$OrPart.<init>(PartTree.java:243)
-	at org.springframework.data.repository.query.parser.PartTree$Predicate.lambda$new$0(PartTree.java:372)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
-	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
-	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
-	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
-	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
-	at org.springframework.data.repository.query.parser.PartTree$Predicate.<init>(PartTree.java:373)
-	at org.springframework.data.repository.query.parser.PartTree.<init>(PartTree.java:96)
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:89)
-	... 60 common frames omitted
-2023-02-27 14:37:17 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
-2023-02-27 14:37:17 [main] INFO  com.metro.HrApplication - Starting HrApplication using Java 18 with PID 8096 (C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes started by mwairimu in C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main)
-2023-02-27 14:37:17 [main] INFO  com.metro.HrApplication - No active profile set, falling back to 1 default profile: "default"
-2023-02-27 14:37:19 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-02-27 14:37:19 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 275 ms. Found 24 JPA repository interfaces.
-2023-02-27 14:37:20 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8200 (http)
-2023-02-27 14:37:20 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8200"]
-2023-02-27 14:37:20 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2023-02-27 14:37:20 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.4]
-2023-02-27 14:37:20 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2023-02-27 14:37:20 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3426 ms
-2023-02-27 14:37:21 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-02-27 14:37:21 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.6.Final
-2023-02-27 14:37:21 [main] WARN  org.hibernate.orm.deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
-2023-02-27 14:37:21 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2023-02-27 14:37:21 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@f42336c
-2023-02-27 14:37:21 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2023-02-27 14:37:21 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2023-02-27 14:37:24 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-02-27 14:37:24 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-02-27 14:37:25 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'nextOfKinDetailsAPI' defined in file [C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes\com\metro\setups\biodatasetups\kin\api\NextOfKinDetailsAPI.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'nextOfKinServiceImpl' defined in file [C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes\com\metro\setups\biodatasetups\kin\services\impl\NextOfKinServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'nextOfKinDetailsRepository' defined in com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract boolean com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository.existsNextOfKinDetailsByNameIgnoreCaseCase(java.lang.String); Reason: Failed to create query for method public abstract boolean com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository.existsNextOfKinDetailsByNameIgnoreCaseCase(java.lang.String); No property 'case' found for type 'String' Did you mean ''hash'' Traversed path: NextOfKinDetails.name.
-2023-02-27 14:37:25 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-02-27 14:37:25 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2023-02-27 14:37:25 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2023-02-27 14:37:25 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
-2023-02-27 14:37:25 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2023-02-27 14:37:25 [main] ERROR o.s.boot.SpringApplication - Application run failed
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'nextOfKinDetailsAPI' defined in file [C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes\com\metro\setups\biodatasetups\kin\api\NextOfKinDetailsAPI.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'nextOfKinServiceImpl' defined in file [C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes\com\metro\setups\biodatasetups\kin\services\impl\NextOfKinServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'nextOfKinDetailsRepository' defined in com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract boolean com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository.existsNextOfKinDetailsByNameIgnoreCaseCase(java.lang.String); Reason: Failed to create query for method public abstract boolean com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository.existsNextOfKinDetailsByNameIgnoreCaseCase(java.lang.String); No property 'case' found for type 'String' Did you mean ''hash'' Traversed path: NextOfKinDetails.name.
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798)
-	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:245)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1344)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:961)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:915)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584)
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291)
-	at com.metro.HrApplication.main(HrApplication.java:12)
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'nextOfKinServiceImpl' defined in file [C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes\com\metro\setups\biodatasetups\kin\services\impl\NextOfKinServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'nextOfKinDetailsRepository' defined in com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract boolean com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository.existsNextOfKinDetailsByNameIgnoreCaseCase(java.lang.String); Reason: Failed to create query for method public abstract boolean com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository.existsNextOfKinDetailsByNameIgnoreCaseCase(java.lang.String); No property 'case' found for type 'String' Did you mean ''hash'' Traversed path: NextOfKinDetails.name.
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798)
-	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:245)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1344)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325)
-	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:885)
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:789)
-	... 19 common frames omitted
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'nextOfKinDetailsRepository' defined in com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract boolean com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository.existsNextOfKinDetailsByNameIgnoreCaseCase(java.lang.String); Reason: Failed to create query for method public abstract boolean com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository.existsNextOfKinDetailsByNameIgnoreCaseCase(java.lang.String); No property 'case' found for type 'String' Did you mean ''hash'' Traversed path: NextOfKinDetails.name.
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1751)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325)
-	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:885)
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:789)
-	... 33 common frames omitted
-Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract boolean com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository.existsNextOfKinDetailsByNameIgnoreCaseCase(java.lang.String); Reason: Failed to create query for method public abstract boolean com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository.existsNextOfKinDetailsByNameIgnoreCaseCase(java.lang.String); No property 'case' found for type 'String' Did you mean ''hash'' Traversed path: NextOfKinDetails.name.
-	at org.springframework.data.repository.query.QueryCreationException.create(QueryCreationException.java:101)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:115)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.mapMethodsToQuery(QueryExecutorMethodInterceptor.java:99)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lambda$new$0(QueryExecutorMethodInterceptor.java:88)
-	at java.base/java.util.Optional.map(Optional.java:260)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.<init>(QueryExecutorMethodInterceptor.java:88)
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport.getRepository(RepositoryFactorySupport.java:357)
-	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.lambda$afterPropertiesSet$5(RepositoryFactoryBeanSupport.java:279)
-	at org.springframework.data.util.Lazy.getNullable(Lazy.java:229)
-	at org.springframework.data.util.Lazy.get(Lazy.java:113)
-	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.afterPropertiesSet(RepositoryFactoryBeanSupport.java:285)
-	at org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean.afterPropertiesSet(JpaRepositoryFactoryBean.java:132)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1797)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1747)
-	... 44 common frames omitted
-Caused by: java.lang.IllegalArgumentException: Failed to create query for method public abstract boolean com.metro.setups.biodatasetups.kin.repositories.NextOfKinDetailsRepository.existsNextOfKinDetailsByNameIgnoreCaseCase(java.lang.String); No property 'case' found for type 'String' Did you mean ''hash'' Traversed path: NextOfKinDetails.name.
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:96)
-	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:124)
-	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateIfNotFoundQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:258)
-	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:95)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:111)
-	... 56 common frames omitted
-Caused by: org.springframework.data.mapping.PropertyReferenceException: No property 'case' found for type 'String' Did you mean ''hash'' Traversed path: NextOfKinDetails.name.
-	at org.springframework.data.mapping.PropertyPath.<init>(PropertyPath.java:90)
-	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:423)
-	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:399)
-	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:433)
-	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:456)
-	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:399)
-	at org.springframework.data.mapping.PropertyPath.lambda$from$0(PropertyPath.java:352)
-	at java.base/java.util.concurrent.ConcurrentMap.computeIfAbsent(ConcurrentMap.java:330)
-	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:334)
-	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:317)
-	at org.springframework.data.repository.query.parser.Part.<init>(Part.java:81)
-	at org.springframework.data.repository.query.parser.PartTree$OrPart.lambda$new$0(PartTree.java:242)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
-	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
-	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
-	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
-	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
-	at org.springframework.data.repository.query.parser.PartTree$OrPart.<init>(PartTree.java:243)
-	at org.springframework.data.repository.query.parser.PartTree$Predicate.lambda$new$0(PartTree.java:372)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
-	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
-	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
-	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
-	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
-	at org.springframework.data.repository.query.parser.PartTree$Predicate.<init>(PartTree.java:373)
-	at org.springframework.data.repository.query.parser.PartTree.<init>(PartTree.java:96)
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:89)
-	... 60 common frames omitted
-2023-02-27 14:38:33 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
-2023-02-27 14:38:33 [main] INFO  com.metro.HrApplication - Starting HrApplication using Java 18 with PID 21124 (C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes started by mwairimu in C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main)
-2023-02-27 14:38:33 [main] INFO  com.metro.HrApplication - No active profile set, falling back to 1 default profile: "default"
-2023-02-27 14:38:35 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-02-27 14:38:36 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 244 ms. Found 24 JPA repository interfaces.
-2023-02-27 14:38:37 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8200 (http)
-2023-02-27 14:38:37 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8200"]
-2023-02-27 14:38:37 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2023-02-27 14:38:37 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.4]
-2023-02-27 14:38:37 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2023-02-27 14:38:37 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3376 ms
-2023-02-27 14:38:37 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-02-27 14:38:37 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.6.Final
-2023-02-27 14:38:37 [main] WARN  org.hibernate.orm.deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
-2023-02-27 14:38:38 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2023-02-27 14:38:38 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@40013051
-2023-02-27 14:38:38 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2023-02-27 14:38:38 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2023-02-27 14:38:40 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-02-27 14:38:40 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-02-27 14:38:42 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-02-27 14:38:44 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 13 endpoint(s) beneath base path '/actuator'
-2023-02-27 14:38:44 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@16a83016, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@592efd6, org.springframework.security.web.context.SecurityContextHolderFilter@62e8ef9f, org.springframework.security.web.header.HeaderWriterFilter@4fda9fde, org.springframework.security.web.authentication.logout.LogoutFilter@246701d5, com.metro.config.security.JwtAuthenticationFilter@4bfaff23, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6d9f624, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6ce7d6ab, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@33903444, org.springframework.security.web.session.SessionManagementFilter@4cc9d672, org.springframework.security.web.access.ExceptionTranslationFilter@69e346b3, org.springframework.security.web.access.intercept.AuthorizationFilter@404a7c61]
-2023-02-27 14:38:45 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8200"]
-2023-02-27 14:38:45 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8200 (http) with context path ''
-2023-02-27 14:38:45 [main] INFO  com.metro.HrApplication - Started HrApplication in 12.359 seconds (process running for 13.707)
-2023-02-27 14:38:45 [RMI TCP Connection(3)-172.28.176.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-02-27 14:38:45 [RMI TCP Connection(3)-172.28.176.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2023-02-27 14:38:45 [RMI TCP Connection(3)-172.28.176.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
-2023-02-27 14:39:42 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-02-27 14:39:42 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2023-02-27 14:39:42 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2023-02-27 14:39:51 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
-2023-02-27 14:39:51 [main] INFO  com.metro.HrApplication - Starting HrApplication using Java 18 with PID 10212 (C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes started by mwairimu in C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main)
-2023-02-27 14:39:51 [main] INFO  com.metro.HrApplication - No active profile set, falling back to 1 default profile: "default"
-2023-02-27 14:39:53 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-02-27 14:39:53 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 258 ms. Found 24 JPA repository interfaces.
-2023-02-27 14:39:54 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8200 (http)
-2023-02-27 14:39:54 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8200"]
-2023-02-27 14:39:54 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2023-02-27 14:39:54 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.4]
-2023-02-27 14:39:54 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2023-02-27 14:39:54 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3402 ms
-2023-02-27 14:39:54 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-02-27 14:39:55 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.6.Final
-2023-02-27 14:39:55 [main] WARN  org.hibernate.orm.deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
-2023-02-27 14:39:55 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2023-02-27 14:39:55 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@294ebe11
-2023-02-27 14:39:55 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2023-02-27 14:39:55 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2023-02-27 14:39:58 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-02-27 14:39:58 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-02-27 14:40:00 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-02-27 14:40:01 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 13 endpoint(s) beneath base path '/actuator'
-2023-02-27 14:40:01 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5d27a744, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@41185195, org.springframework.security.web.context.SecurityContextHolderFilter@26c7940a, org.springframework.security.web.header.HeaderWriterFilter@3b26afbc, org.springframework.security.web.authentication.logout.LogoutFilter@264f18fe, com.metro.config.security.JwtAuthenticationFilter@5834fd3f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@39e0fe23, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@44f86613, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1849d35a, org.springframework.security.web.session.SessionManagementFilter@245b009a, org.springframework.security.web.access.ExceptionTranslationFilter@5522f9b, org.springframework.security.web.access.intercept.AuthorizationFilter@2c9616bb]
-2023-02-27 14:40:02 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8200"]
-2023-02-27 14:40:02 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8200 (http) with context path ''
-2023-02-27 14:40:02 [main] INFO  com.metro.HrApplication - Started HrApplication in 12.307 seconds (process running for 13.522)
-2023-02-27 14:40:03 [RMI TCP Connection(5)-172.28.176.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-02-27 14:40:03 [RMI TCP Connection(5)-172.28.176.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2023-02-27 14:40:03 [RMI TCP Connection(5)-172.28.176.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
-2023-02-27 14:40:13 [http-nio-8200-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 560 ms
-2023-02-27 15:10:23 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-02-27 15:10:23 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2023-02-27 15:10:23 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2023-02-27 16:05:11 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
-2023-02-27 16:05:12 [main] INFO  com.metro.HrApplication - Starting HrApplication using Java 18 with PID 3740 (C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes started by mwairimu in C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main)
-2023-02-27 16:05:12 [main] INFO  com.metro.HrApplication - No active profile set, falling back to 1 default profile: "default"
-2023-02-27 16:05:13 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-02-27 16:05:13 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 210 ms. Found 25 JPA repository interfaces.
-2023-02-27 16:05:14 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8200 (http)
-2023-02-27 16:05:14 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8200"]
-2023-02-27 16:05:14 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2023-02-27 16:05:14 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.4]
-2023-02-27 16:05:14 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2023-02-27 16:05:14 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2832 ms
-2023-02-27 16:05:15 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-02-27 16:05:15 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.6.Final
-2023-02-27 16:05:15 [main] WARN  org.hibernate.orm.deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
-2023-02-27 16:05:15 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2023-02-27 16:05:15 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@48aa0813
-2023-02-27 16:05:15 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2023-02-27 16:05:15 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2023-02-27 16:05:18 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-02-27 16:05:18 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-02-27 16:05:19 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-02-27 16:05:21 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 13 endpoint(s) beneath base path '/actuator'
-2023-02-27 16:05:21 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@492d0748, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6a4ba6f4, org.springframework.security.web.context.SecurityContextHolderFilter@2fc698a9, org.springframework.security.web.header.HeaderWriterFilter@32c7495, org.springframework.security.web.authentication.logout.LogoutFilter@1b204439, com.metro.config.security.JwtAuthenticationFilter@125df632, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@85446a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4efb7c99, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3e0eb917, org.springframework.security.web.session.SessionManagementFilter@75225415, org.springframework.security.web.access.ExceptionTranslationFilter@2140582, org.springframework.security.web.access.intercept.AuthorizationFilter@712a5de4]
-2023-02-27 16:05:21 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8200"]
-2023-02-27 16:05:21 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8200 (http) with context path ''
-2023-02-27 16:05:21 [main] INFO  com.metro.HrApplication - Started HrApplication in 10.742 seconds (process running for 11.978)
-2023-02-27 16:05:22 [RMI TCP Connection(2)-172.28.176.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-02-27 16:05:22 [RMI TCP Connection(2)-172.28.176.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2023-02-27 16:05:22 [RMI TCP Connection(2)-172.28.176.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
-2023-02-27 16:05:49 [http-nio-8200-exec-2] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 360 ms
-2023-02-27 16:05:52 [http-nio-8200-exec-1] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 239 ms
+2023-03-03 08:22:04 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=15h17m28s784ms999µs400ns).
+2023-03-03 09:09:47 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-03-03 09:09:47 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-03-03 09:09:47 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-03-03 09:10:35 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-03-03 09:10:35 [main] INFO  com.metro.HrApplication - Starting HrApplication using Java 18 with PID 220 (C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes started by mwairimu in C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main)
+2023-03-03 09:10:35 [main] INFO  com.metro.HrApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-03 09:10:37 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-03-03 09:10:37 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 244 ms. Found 31 JPA repository interfaces.
+2023-03-03 09:10:38 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8200 (http)
+2023-03-03 09:10:38 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8200"]
+2023-03-03 09:10:38 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-03-03 09:10:38 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.4]
+2023-03-03 09:10:38 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-03-03 09:10:38 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2922 ms
+2023-03-03 09:10:38 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-03-03 09:10:38 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.6.Final
+2023-03-03 09:10:38 [main] WARN  org.hibernate.orm.deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-03-03 09:10:39 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-03-03 09:10:39 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@73b8ab2c
+2023-03-03 09:10:39 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-03-03 09:10:39 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-03-03 09:10:41 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-03-03 09:10:41 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-03-03 09:10:44 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-03-03 09:10:45 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 13 endpoint(s) beneath base path '/actuator'
+2023-03-03 09:10:45 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6e681c3b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5519ee60, org.springframework.security.web.context.SecurityContextHolderFilter@635f4be1, org.springframework.security.web.header.HeaderWriterFilter@4b75d640, org.springframework.security.web.authentication.logout.LogoutFilter@65dff28b, com.metro.config.security.JwtAuthenticationFilter@77d03738, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@26a0068a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@783a2fec, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@66008321, org.springframework.security.web.session.SessionManagementFilter@1847da64, org.springframework.security.web.access.ExceptionTranslationFilter@412b90cc, org.springframework.security.web.access.intercept.AuthorizationFilter@2623ad23]
+2023-03-03 09:10:45 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8200"]
+2023-03-03 09:10:45 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8200 (http) with context path ''
+2023-03-03 09:10:45 [main] INFO  com.metro.HrApplication - Started HrApplication in 11.651 seconds (process running for 12.894)
+2023-03-03 09:10:46 [RMI TCP Connection(2)-172.28.176.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-03 09:10:46 [RMI TCP Connection(2)-172.28.176.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-03-03 09:10:46 [RMI TCP Connection(2)-172.28.176.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2023-03-03 09:11:05 [http-nio-8200-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 538 ms
+2023-03-03 09:11:27 [http-nio-8200-exec-2] INFO  c.m.s.A.e.s.i.EmergencyContactDetailsImpl - Selecting Emergency Contact details with ID : 
+2023-03-03 09:16:03 [http-nio-8200-exec-5] INFO  c.m.s.A.e.s.i.EmergencyContactDetailsImpl - Saving Employee Emergency details with ID : 
+2023-03-03 09:16:18 [http-nio-8200-exec-8] INFO  c.m.s.A.e.s.i.EmergencyContactDetailsImpl - Saving Employee Emergency details with ID : 
+2023-03-03 09:16:34 [http-nio-8200-exec-9] INFO  c.m.s.A.e.s.i.EmergencyContactDetailsImpl - Selecting Emergency Contact details with ID : 
+2023-03-03 09:16:43 [http-nio-8200-exec-10] INFO  c.m.s.A.e.s.i.EmergencyContactDetailsImpl - Selecting Emergency Contact details with ID : 
+2023-03-03 09:17:18 [http-nio-8200-exec-2] INFO  c.m.s.A.e.s.i.EmergencyContactDetailsImpl - Updating Employee Emergency details with ID : 
+2023-03-03 09:51:59 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-03-03 09:51:59 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-03-03 09:51:59 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-03-03 09:52:11 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-03-03 09:52:11 [main] INFO  com.metro.HrApplication - Starting HrApplication using Java 18 with PID 6520 (C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes started by mwairimu in C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main)
+2023-03-03 09:52:11 [main] INFO  com.metro.HrApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-03 09:52:12 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-03-03 09:52:13 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 233 ms. Found 31 JPA repository interfaces.
+2023-03-03 09:52:13 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8200 (http)
+2023-03-03 09:52:13 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8200"]
+2023-03-03 09:52:13 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-03-03 09:52:13 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.4]
+2023-03-03 09:52:13 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-03-03 09:52:13 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2699 ms
+2023-03-03 09:52:14 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-03-03 09:52:14 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.6.Final
+2023-03-03 09:52:14 [main] WARN  org.hibernate.orm.deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-03-03 09:52:14 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-03-03 09:52:14 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5b64f771
+2023-03-03 09:52:14 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-03-03 09:52:14 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-03-03 09:52:17 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-03-03 09:52:17 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-03-03 09:52:19 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-03-03 09:52:20 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 13 endpoint(s) beneath base path '/actuator'
+2023-03-03 09:52:20 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6b989889, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@42748f59, org.springframework.security.web.context.SecurityContextHolderFilter@72090715, org.springframework.security.web.header.HeaderWriterFilter@353b5d86, org.springframework.security.web.authentication.logout.LogoutFilter@579b1d86, com.metro.config.security.JwtAuthenticationFilter@31d64d0f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@fcdeb50, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5f7a2a79, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@38379575, org.springframework.security.web.session.SessionManagementFilter@4746b319, org.springframework.security.web.access.ExceptionTranslationFilter@29617475, org.springframework.security.web.access.intercept.AuthorizationFilter@783a2fec]
+2023-03-03 09:52:21 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8200"]
+2023-03-03 09:52:21 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8200 (http) with context path ''
+2023-03-03 09:52:21 [main] INFO  com.metro.HrApplication - Started HrApplication in 11.106 seconds (process running for 12.285)
+2023-03-03 09:52:21 [RMI TCP Connection(3)-172.28.176.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-03 09:52:21 [RMI TCP Connection(3)-172.28.176.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-03-03 09:52:21 [RMI TCP Connection(3)-172.28.176.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2023-03-03 09:52:35 [http-nio-8200-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 574 ms
+2023-03-03 09:52:55 [http-nio-8200-exec-2] INFO  c.m.s.A.e.s.i.EmployeeAddressDetailsImpl - Getting Address Details by input Staff_ID
+2023-03-03 09:53:18 [http-nio-8200-exec-4] INFO  c.m.s.A.e.s.i.EmployeeAddressDetailsImpl - saving address of the employee with email string and id 1
+2023-03-03 09:53:34 [http-nio-8200-exec-8] INFO  c.m.s.A.e.s.i.EmployeeAddressDetailsImpl - Getting Address Details by input Staff_ID
+2023-03-03 09:54:06 [http-nio-8200-exec-9] INFO  c.m.s.A.e.s.i.EmployeeAddressDetailsImpl - updating address of the employee with email string and id null
+2023-03-03 09:55:54 [http-nio-8200-exec-10] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 382 ms
+2023-03-03 10:56:21 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=17m5s506ms380µs700ns).
+2023-03-03 11:48:16 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=11m48s401ms430µs800ns).
+2023-03-03 12:26:15 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=11m29s218ms747µs400ns).
+2023-03-03 14:27:51 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h21m4s847ms936µs900ns).
+2023-03-03 14:52:07 [http-nio-8200-exec-8] INFO  c.m.s.b.c.s.Impl.ChildrenServiceImpl - Saving Employee's child with id : null
+2023-03-03 14:54:35 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-03-03 14:54:35 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-03-03 14:54:35 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-03-03 14:54:50 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-03-03 14:54:50 [main] INFO  com.metro.HrApplication - Starting HrApplication using Java 18 with PID 4952 (C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main\target\classes started by mwairimu in C:\Users\MIAN\Learning\spring-boot-3-jwt-security-main)
+2023-03-03 14:54:50 [main] INFO  com.metro.HrApplication - No active profile set, falling back to 1 default profile: "default"
+2023-03-03 14:54:53 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-03-03 14:54:53 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 300 ms. Found 31 JPA repository interfaces.
+2023-03-03 14:54:54 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8200 (http)
+2023-03-03 14:54:54 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8200"]
+2023-03-03 14:54:54 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-03-03 14:54:54 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.4]
+2023-03-03 14:54:55 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-03-03 14:54:55 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4363 ms
+2023-03-03 14:54:55 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-03-03 14:54:55 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.1.6.Final
+2023-03-03 14:54:56 [main] WARN  org.hibernate.orm.deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-03-03 14:54:56 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-03-03 14:54:56 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7e691624
+2023-03-03 14:54:56 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-03-03 14:54:56 [main] INFO  SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-03-03 14:54:59 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-03-03 14:54:59 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-03-03 14:55:02 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-03-03 14:55:04 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 13 endpoint(s) beneath base path '/actuator'
+2023-03-03 14:55:04 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6abdead7, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@412b90cc, org.springframework.security.web.context.SecurityContextHolderFilter@7d8802cf, org.springframework.security.web.header.HeaderWriterFilter@77fa509a, org.springframework.security.web.authentication.logout.LogoutFilter@4ea8832c, com.metro.config.security.JwtAuthenticationFilter@63bb52ea, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@494775f1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5ac3d009, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6232cde5, org.springframework.security.web.session.SessionManagementFilter@4c53ce60, org.springframework.security.web.access.ExceptionTranslationFilter@a19fe87, org.springframework.security.web.access.intercept.AuthorizationFilter@446dea16]
+2023-03-03 14:55:05 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8200"]
+2023-03-03 14:55:05 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8200 (http) with context path ''
+2023-03-03 14:55:05 [main] INFO  com.metro.HrApplication - Started HrApplication in 16.192 seconds (process running for 17.344)
+2023-03-03 14:55:06 [RMI TCP Connection(3)-172.28.176.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-03 14:55:06 [RMI TCP Connection(3)-172.28.176.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-03-03 14:55:06 [RMI TCP Connection(3)-172.28.176.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2023-03-03 14:55:13 [http-nio-8200-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 1623 ms
+2023-03-03 14:55:26 [http-nio-8200-exec-4] INFO  c.m.s.b.c.s.Impl.ChildrenServiceImpl - Getting Children by Id
+2023-03-03 14:56:20 [http-nio-8200-exec-8] INFO  c.m.s.b.s.s.i.SpouseDetailsServiceImpl - Saving Spouse details for employee with id 
+2023-03-03 14:56:37 [http-nio-8200-exec-3] INFO  c.m.s.b.s.s.i.SpouseDetailsServiceImpl - Getting next of kin details by input ID 1
+2023-03-03 14:57:00 [http-nio-8200-exec-1] INFO  c.m.s.b.s.s.i.SpouseDetailsServiceImpl - Updating Spouse details for employee with id 1
+2023-03-03 14:57:29 [http-nio-8200-exec-9] INFO  c.m.s.A.s.s.i.StaffNationalIdDetailsServiceImpl - Selecting Id details for Staff ID : 
+2023-03-03 14:59:29 [http-nio-8200-exec-4] INFO  c.m.s.A.s.s.i.StaffNationalIdDetailsServiceImpl - Creating National Id Details for Employee with Id 
