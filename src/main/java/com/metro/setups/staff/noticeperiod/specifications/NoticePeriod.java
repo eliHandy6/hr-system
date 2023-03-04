@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "notice_period")
+@Table(name = "notice_period", schema="hrm")
 public class NoticePeriod extends Auditable {
 
     @Column(name = "notice_period_name", nullable = false)

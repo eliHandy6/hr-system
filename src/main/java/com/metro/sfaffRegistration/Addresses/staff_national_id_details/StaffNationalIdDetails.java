@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "EMPLOYEE_NATIONAL_ID_DETAILS")
+@Table(name = "EMPLOYEE_NATIONAL_ID_DETAILS", schema="hrm")
 public class StaffNationalIdDetails extends Auditable {
 
     @Column(name = "DIVISION_NAME", nullable = true)

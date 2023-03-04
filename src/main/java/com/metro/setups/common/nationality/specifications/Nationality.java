@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "nationality")
+@Table(name = "nationality",schema = "hrm")
 public class Nationality extends Auditable {
 
     @Column(name = "nationality_name", nullable = false)

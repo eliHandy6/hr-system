@@ -11,7 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "SHIFT_DETAILS")
+@Table(name = "SHIFT_DETAILS", schema = "hrm")
 @Data
 @Builder
 @NoArgsConstructor

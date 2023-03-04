@@ -21,7 +21,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "EMPLOYEE_LICENSES AND_CERTIFICATES_ID_DETAILS")
+@Table(name = "EMPLOYEE_LICENSES CERTIFICATES_ID_DETAILS", schema="hrm")
 public class LicensesAndCertificatesDetails extends Auditable {
     @Column(name = "ISSSUER_NAME", nullable = false)
     private  String issuerName;

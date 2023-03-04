@@ -24,7 +24,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "SECTIONS_TABLE")
+@Table(name = "SECTIONS_TABLE", schema = "hrm")
 public class Section extends Auditable {
     @Column(name = "SECTION_NAME")
     private String name;

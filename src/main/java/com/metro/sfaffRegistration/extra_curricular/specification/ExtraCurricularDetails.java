@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "EXTRA_CURRICULAR_DETAILS")
+@Table(name = "EXTRA_CURRICULAR_DETAILS", schema="hrm")
 public class ExtraCurricularDetails extends Auditable {
     @Column(name = "SOCIAL_CLUB_NAME", nullable = false)
     private String socialClubName;

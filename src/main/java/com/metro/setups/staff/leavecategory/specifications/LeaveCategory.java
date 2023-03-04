@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "leave_category")
+@Table(name = "leave_category", schema="hrm")
 public class LeaveCategory extends Auditable {
 
     @Column(name = "leave_category_name", nullable = false)

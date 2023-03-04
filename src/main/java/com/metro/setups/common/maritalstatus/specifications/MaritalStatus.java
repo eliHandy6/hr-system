@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "marital_status")
+@Table(name = "marital_status",schema = "hrm")
 public class MaritalStatus extends Auditable {
 
     @Column(name = "marital_status_name", nullable = false)

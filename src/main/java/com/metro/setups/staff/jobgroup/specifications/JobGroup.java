@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "job_group")
+@Table(name = "job_group", schema="hrm")
 public class JobGroup extends Auditable {
 
     @Column(name = "job_group_name", nullable = false)

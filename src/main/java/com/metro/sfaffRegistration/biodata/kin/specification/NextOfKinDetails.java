@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "NEXT_OF_KIN")
+@Table(name = "NEXT_OF_KIN", schema="hrm")
 public class NextOfKinDetails extends Auditable {
     @Column(name = "NAME", nullable = false)
     private String name;

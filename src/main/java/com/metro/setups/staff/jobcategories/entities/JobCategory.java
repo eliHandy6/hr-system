@@ -22,7 +22,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "JOB_CATEGORY")
+@Table(name = "JOB_CATEGORY", schema = "hrm")
 public class JobCategory extends Auditable {
     @Column(name = "JOB_NAME")
     private String name;

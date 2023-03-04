@@ -21,7 +21,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "CHILDREN_TABLE")
+@Table(name = "CHILDREN_TABLE", schema="hrm")
 public class Children extends Auditable {
     @Column(name = "FIRST_NAME", nullable = false)
     private String firstName;

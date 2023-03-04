@@ -9,7 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 
 @Entity
-@Table(name = "Titles")
+@Table(name = "Titles", schema = "hrm")
 @Data
 @Builder
 
@@ -19,7 +19,6 @@ public class Titles extends Auditable {
     private String name;
 
     public Titles() {
-
     }
     public  Titles(String name){
         this.name = name;

@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "JOB_SUBCATEGORIES_TABLE")
+@Table(name = "JOB_SUBCATEGORIES_TABLE", schema="hrm")
 public class JobSubCategories extends Auditable {
     @Column(name = "SECTION_NAME")
     private String name;

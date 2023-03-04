@@ -21,7 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "EMPLOYEES_TABLE")
+@Table(name = "EMPLOYEES_TABLE", schema="hrm")
 public class Employee extends Auditable {
     @Column(name = "Employee_Name", nullable = false)
     private String name;

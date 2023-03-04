@@ -13,7 +13,7 @@ import java.util.Set;
 
 @Entity
 @Data
-@Table(name = "auth_role")
+@Table(name = "auth_role", schema="hrm")
 @Builder
 @AllArgsConstructor
 public class Role {

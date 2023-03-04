@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "auth_permission")
+@Table(name = "auth_permission", schema="hrm")
 public class Permission extends Auditable {
 
     private String name;

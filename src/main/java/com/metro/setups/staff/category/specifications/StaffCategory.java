@@ -24,7 +24,7 @@ import javax.naming.Name;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "staff_category")
+@Table(name = "staff_category", schema = "hrm")
 public class StaffCategory extends Auditable {
 
     @Column(name = "category_name", nullable = false)

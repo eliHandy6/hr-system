@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "DISTRICT_TABLE")
+@Table(name = "DISTRICT_TABLE", schema = "hrm")
 public class District extends Auditable {
     @Column(name = "DISTRICT_NAME")
     private String name;

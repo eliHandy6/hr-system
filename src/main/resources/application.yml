@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/metro_hr_db
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://192.168.4.7:5432/ams-test
+    username: hrm_dev
+    password: hrmdev123
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -16,7 +16,7 @@ spring:
 #server
 
 server:
-  port: 8200
+  port: 8201
 
 #management
 
