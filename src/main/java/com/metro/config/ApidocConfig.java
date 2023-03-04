@@ -85,7 +85,9 @@ public class ApidocConfig {
                 "/api/v1/jobsubcategory/**",
                 "/api/v1/payroll-groups/**",
                 "/api/v1/notice-periods/**",
-                "/api/v1/shift_details/**"
+                "/api/v1/shift_details/**",
+                "/api/v1/notice-periods/**"
+
 
         };
         return GroupedOpenApi.builder()
@@ -93,6 +95,7 @@ public class ApidocConfig {
                 .pathsToMatch(paths)
                 .build();
     }
+
     @Bean
     public GroupedOpenApi staffRegistration() {
         String[] paths = {"/staff/{staff_id}/children_details/**",
@@ -104,7 +107,7 @@ public class ApidocConfig {
                 "/staff/{staff_id}/address_details/**",
                 "/staff/{staff_id}/kin_details/**",
                 "/staff/{staff_id}/spouse_details/**",
-                "/api/v1/employee/**"
+                "/api/v1/staffs/**"
 
         };
         return GroupedOpenApi.builder()
