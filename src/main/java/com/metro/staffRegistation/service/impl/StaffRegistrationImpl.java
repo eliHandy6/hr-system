@@ -6,14 +6,15 @@ import com.metro.setups.common.titles.Entity.Titles;
 import com.metro.setups.common.titles.repositories.TitleRepository;
 import com.metro.setups.department.repositories.DepartmentRepository;
 import com.metro.setups.designation.repository.DesignationRepository;
-import com.metro.setups.jobcategories.entities.JobCategory;
-import com.metro.setups.jobcategories.repositories.JobCategoryRepositories;
-import com.metro.setups.jobsubcategories.repositories.JobSubCategoryRepository;
+
 import com.metro.setups.sections.respositories.SectionRepository;
 import com.metro.setups.staff.businessunit.repositories.BusinessUnitRepository;
 import com.metro.setups.staff.category.repositories.StaffCategoryRepository;
 import com.metro.setups.staff.category.specifications.StaffCategory;
+import com.metro.setups.staff.jobcategories.entities.JobCategory;
+import com.metro.setups.staff.jobcategories.repositories.JobCategoryRepositories;
 import com.metro.setups.staff.jobgroup.repositories.JobGroupRepository;
+import com.metro.setups.staff.jobsubcategories.repositories.JobSubCategoryRepository;
 import com.metro.setups.staff.leavecategory.repositories.LeaveCategoryRepository;
 import com.metro.setups.staff.noticeperiod.repositories.NoticePeriodRepository;
 import com.metro.setups.staff.payrollgroup.repositories.PayrollGroupRepository;
